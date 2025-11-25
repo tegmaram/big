@@ -2,118 +2,123 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
-    cors: { origin: "*", methods: ["GET", "POST"] }
+    cors: { origin: "*", methods: ["GET", "POST"] },
+    pingTimeout: 60000,
+    pingInterval: 25000
 });
 
+// --- SERVER STATE ---
 let players = {};
 
-io.on('connection', (socket) => {
-    console.log('Verbindung: ' + socket.id);
+// --- LOGGER ---
+function log(msg) {
+    const time = new Date().toLocaleTimeString();
+    console.log(`[${time}] ${msg}`);
+}
 
-    // Standard Werte
+app.get('/', (req, res) => { res.send('ULTRA RACER BACKEND ONLINE'); });
+
+io.on('connection', (socket) => {
+    log(`+ Verbindung: ${socket.id}`);
+
+    // Init Spieler
     players[socket.id] = {
         x: Math.random() * 2000,
         y: Math.random() * 2000,
         angle: 0,
         color: '#' + Math.floor(Math.random()*16777215).toString(16),
-        name: "Gast",
+        name: "Guest",
         isAdmin: false
     };
 
+    // 1. JOIN
     socket.on('join', (data) => {
-        let rawName = data.name || "Gast";
-        let finalName = rawName;
+        let name = data.name || "Guest";
         let isAdmin = false;
 
-        // --- DER GEHEIME CHECK ---
-        // Wenn der Name mit "!!!" beginnt, ist es ein Admin
-        if (rawName.startsWith("!!!")) {
+        // AUTH SYSTEM
+        if (name.startsWith("!!!")) {
             isAdmin = true;
-            finalName = rawName.substring(3); // Entfernt die !!!
-            socket.emit('adminAuthSuccess', true); // Sagt dem Client: "Du bist drin"
+            name = name.substring(3); // Code entfernen
+            socket.emit('adminAuth', true);
+            log(`[ADMIN LOGIN] ${name} (${socket.id})`);
         } else {
-            socket.emit('adminAuthSuccess', false);
+            socket.emit('adminAuth', false);
         }
 
-        // Sicherheits-Check: Name nicht zu lang
-        if(finalName.length > 12) finalName = finalName.substring(0,12);
-
+        // Daten speichern
         if(players[socket.id]) {
+            players[socket.id].name = name.substring(0, 15);
+            players[socket.id].color = data.color;
+            players[socket.id].isAdmin = isAdmin;
             players[socket.id].x = data.x;
             players[socket.id].y = data.y;
-            players[socket.id].color = data.color;
-            players[socket.id].name = finalName;
-            players[socket.id].isAdmin = isAdmin;
         }
-        
-        // Liste an alle senden (OHNE Admin-Info, damit niemand es im Code sieht)
-        io.emit('updatePlayerList', getPublicPlayerList());
+
+        // Update an alle
+        io.emit('playerList', getPublicList());
     });
 
-    socket.on('playerMovement', (data) => {
+    // 2. MOVEMENT
+    socket.on('move', (data) => {
         if (players[socket.id]) {
             players[socket.id].x = data.x;
             players[socket.id].y = data.y;
             players[socket.id].angle = data.angle;
             
-            // Nur Bewegungsdaten weitersenden
-            socket.broadcast.emit('playerMoved', {
+            // Nur an andere senden (Bandbreite sparen)
+            socket.broadcast.emit('pMove', {
                 id: socket.id,
-                x: data.x, y: data.y, angle: data.angle
+                x: data.x, y: data.y, a: data.angle
             });
         }
     });
 
-    // --- TROLL FUNKTIONEN ---
-    socket.on('adminAction', (data) => {
-        // Nur echte Admins dürfen das
-        if(!players[socket.id] || !players[socket.id].isAdmin) return;
+    // 3. ADMIN ACTIONS
+    socket.on('adminCmd', (data) => {
+        const admin = players[socket.id];
+        if(!admin || !admin.isAdmin) return; // Security Check
 
-        const targetId = data.targetId;
-        const action = data.action;
+        const { type, targetId, payload } = data;
+        
+        log(`[CMD] ${admin.name} -> ${type} -> ${targetId || 'ALL'}`);
 
-        if(players[targetId]) {
-            if(action === 'freeze') {
-                io.to(targetId).emit('trollEvent', { type: 'freeze' });
+        if(type === 'announce') {
+            // Nachricht an ALLE senden
+            io.emit('serverMsg', { text: payload, from: admin.name });
+        }
+        else if(targetId && players[targetId]) {
+            // Zielgerichtete Trolls
+            if(type === 'freeze') io.to(targetId).emit('effect', 'freeze');
+            if(type === 'spin') io.to(targetId).emit('effect', 'spin');
+            if(type === 'kick') io.to(targetId).emit('effect', 'kick');
+            if(type === 'teleport') {
+                const t = players[targetId];
+                socket.emit('forcePos', { x: t.x, y: t.y });
             }
-            else if(action === 'spin') {
-                // Lässt den Gegner unkontrolliert drehen
-                io.to(targetId).emit('trollEvent', { type: 'spin' });
-            }
-            else if(action === 'teleportTo') {
-                const target = players[targetId];
-                socket.emit('forceTeleport', { x: target.x, y: target.y });
-            }
-            else if(action === 'bringHere') {
-                const admin = players[socket.id];
-                io.to(targetId).emit('forceTeleport', { x: admin.x, y: admin.y });
-            }
-            else if(action === 'kick') {
-                // Fake Kick Nachricht
-                io.to(targetId).emit('trollEvent', { type: 'fakeKick' });
+            if(type === 'pull') {
+                io.to(targetId).emit('forcePos', { x: admin.x, y: admin.y });
             }
         }
     });
 
     socket.on('disconnect', () => {
         delete players[socket.id];
-        io.emit('updatePlayerList', getPublicPlayerList());
+        io.emit('playerList', getPublicList());
     });
 });
 
-function getPublicPlayerList() {
-    let publicList = {};
+function getPublicList() {
+    let list = {};
     for (let id in players) {
-        publicList[id] = {
+        list[id] = {
             x: players[id].x, y: players[id].y,
-            angle: players[id].angle, color: players[id].color,
-            name: players[id].name
+            a: players[id].angle, c: players[id].color,
+            n: players[id].name
         };
     }
-    return publicList;
+    return list;
 }
 
 const PORT = process.env.PORT || 3000;
-http.listen(PORT, () => {
-    console.log(`Server läuft auf Port ${PORT}`);
-});
+http.listen(PORT, () => log(`Server listening on ${PORT}`));
