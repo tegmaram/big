@@ -26,8 +26,8 @@
             games = data.games || [];
             categories = data.categories || [];
 
-            const selfGames = games.filter(g => !g.external);
-            const extGames = games.filter(g => g.external);
+            const selfGames = games.filter(g => g.tech !== "external");
+            const extGames = games.filter(g => g.tech === "external");
 
             STAT_SELF.textContent = selfGames.length;
             STAT_EXT.textContent = extGames.length;
@@ -79,7 +79,7 @@
     function createCard(g) {
         const catInfo = categories.find((c) => c.id === g.category) || {};
         const card = document.createElement("article");
-        card.className = "card" + (g.external ? " card-external" : "");
+        card.className = "card" + (g.tech === "external" ? " card-external" : "");
         card.dataset.id = g.id;
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", "0");
@@ -92,16 +92,16 @@
                     <path d="M44 56 L56 50 L44 44 Z" fill="#ffffff" />
                     <text x="50" y="82" font-family="system-ui" font-size="10" fill="#64748b" text-anchor="middle">${g.tech}</text>
                 </svg>
-                ${g.external ? '<div class="ext-overlay">EXTERNAL</div>' : '<div class="self-badge">✓ WORKS</div>'}
+                ${g.tech === "external" ? '<div class="ext-overlay">EXTERNAL</div>' : '<div class="self-badge">✓ WORKS</div>'}
             </div>
             <div class="card-body">
                 <span class="cat-badge" style="background:${catInfo.color || "#334155"}">${catInfo.label || g.category}</span>
-                ${g.external ? '<span class="ext-badge">EXTERNAL</span>' : '<span class="works-badge">FULLY WORKING</span>'}
+                ${g.tech === "external" ? '<span class="ext-badge">EXTERNAL</span>' : '<span class="works-badge">FULLY WORKING</span>'}
                 <h3 class="card-title">${escapeHtml(g.name)}</h3>
                 <p class="card-desc">${escapeHtml(g.description || "")}</p>
             </div>
             <div class="card-footer">
-                <span class="play-hint">${g.external ? "OPEN" : "PLAY"}</span>
+                <span class="play-hint">${g.tech === "external" ? "OPEN" : "PLAY"}</span>
                 <span>${g.tags && g.tags.length ? g.tags.slice(0, 2).join(" • ") : ""}</span>
             </div>
         `;
@@ -139,8 +139,8 @@
         games.forEach((g) => {
             const matchCat =
                 currentCat === "all" ||
-                (currentCat === "self" && !g.external) ||
-                (currentCat === "external" && g.external);
+                (currentCat === "self" && g.tech !== "external") ||
+                (currentCat === "external" && g.tech === "external");
             const matchSearch = g.name.toLowerCase().includes(currentSearch) ||
                 (g.description || "").toLowerCase().includes(currentSearch) ||
                 (g.tags || []).some((t) => t.toLowerCase().includes(currentSearch));
@@ -149,7 +149,7 @@
 
             const card = createCard(g);
 
-            if (g.external) {
+            if (g.tech === "external") {
                 GRID_EXT.appendChild(card);
                 shownExt++;
             } else {
