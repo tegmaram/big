@@ -10,14 +10,22 @@ A fully open-source game launcher with **142 MIT-licensed HTML5 games**. Play in
 
 | Item | Count |
 |------|-------|
-| Games | 142 |
+| Games | 215 (142 open-source + 73 external links) |
 | Categories | 10 (Puzzle, Arcade, Shooter, Racing, Sports, Platformer, Casual, Board, Word & Quiz, 3D) |
-| License | MIT (games keep their original licenses) |
+| License | MIT (launcher + open-source games; external links keep their own licenses) |
 | Build step | None — pure HTML/CSS/JS |
 
 ## Games
 
 Includes classics and originals: **2048, Tetris, Pac-Man, Snake, Chess, Sudoku, Doodle Jump, Flappy, Breakout, Car Race (3D), Stack Tower (3D), Space Fighter, Wordle, Math Quest, Ludo, Carrom,** and many more.
+
+## External games (Classroom Resources / Google Sites)
+
+73 additional games are linked from the [Classroom Resources Google Site](https://sites.google.com/view/drive-u-7-home/home). These are **external links** — clicking them opens the game on its original site in a new tab. They're marked with an orange **"EXTERNAL"** badge in the launcher.
+
+Examples: Survival Race, Snow Rider, Basket Random, Paper.io 2, Slither.io 2, Moto X3M Winter, Basket Random, Soccer Random, Knife Hit, Granny, GTA Simulator, CS 1.6, and many more.
+
+These are included as links only — no game code is copied, so each game retains its own license and terms.
 
 Every game is a standalone HTML page under `games/<category>/<slug>/index.html` with its own assets. Games open in a new tab when you click them.
 

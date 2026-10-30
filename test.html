@@ -165,9 +165,10 @@
             progressWrap.style.display = "block";
             btnRun.disabled = true;
 
-            let pass = 0, fail = 0;
+            let pass = 0, fail = 0, skipped = 0;
 
-            window.__cats = (await fetch("games.json").then(r => r.json())).categories || [];
+            const data = await fetch("games.json").then(r => r.json());
+            window.__cats = data.categories || [];
 
             const rows = {};
             games.forEach(g => { rows[g.id] = createRow(g); });
@@ -175,10 +176,28 @@
             for (let i = 0; i < games.length; i++) {
                 const g = games[i];
                 progressBar.style.width = ((i / games.length) * 100) + "%";
-                valPending.textContent = games.length - i;
+                valPending.textContent = games.length - i - skipped - 1;
 
                 const row = rows[g.id];
                 const statusCell = row.children[2];
+                const pathCell = row.children[3];
+
+                // External games can't be iframed (X-Frame-Options); just validate the URL
+                if (g.external) {
+                    skipped++;
+                    statusCell.textContent = "SKIP";
+                    statusCell.className = "status pending";
+                    row.style.borderLeft = "4px solid var(--pending)";
+                    const hint = document.createElement("div");
+                    hint.className = "error";
+                    hint.textContent = "External link — skipped (cannot iframe)";
+                    pathCell.appendChild(hint);
+                    valPass.textContent = pass;
+                    valFail.textContent = fail;
+                    valPending.textContent = games.length - i - skipped - 1;
+                    continue;
+                }
+
                 statusCell.textContent = "Testing…";
                 statusCell.className = "status pending";
 
@@ -197,17 +216,17 @@
                     const errDiv = document.createElement("div");
                     errDiv.className = "error";
                     errDiv.textContent = result.error;
-                    row.children[3].appendChild(errDiv);
+                    pathCell.appendChild(errDiv);
                 }
 
                 valPass.textContent = pass;
                 valFail.textContent = fail;
-                valPending.textContent = games.length - i - 1;
+                valPending.textContent = games.length - i - skipped - 1;
             }
 
             progressBar.style.width = "100%";
             btnRun.disabled = false;
-            alert(`Test complete: ${pass} passed, ${fail} failed out of ${games.length} games.`);
+            alert(`Test complete: ${pass} passed, ${fail} failed, ${skipped} external (skipped) out of ${games.length} games.`);
         }
 
         btnRun.addEventListener("click", runTests);

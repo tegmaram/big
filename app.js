@@ -99,6 +99,7 @@
                 </div>
                 <div class="card-body">
                     <span class="cat-badge" style="background:${catInfo.color || "#334155"}">${catInfo.label || g.category}</span>
+                    ${g.external ? '<span class="ext-badge">EXTERNAL</span>' : ""}
                     <h3 class="card-title">${escapeHtml(g.name)}</h3>
                     <p class="card-desc">${escapeHtml(g.description || "")}</p>
                 </div>
