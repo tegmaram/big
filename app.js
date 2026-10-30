@@ -112,7 +112,12 @@
             // Click / Enter / Space to play
             const play = () => {
                 const url = g.path.startsWith("http") ? g.path : g.path;
-                window.open(url, "_blank", "noopener,noreferrer");
+                // Try opening in new tab first; Safari/other browsers may block popups
+                const win = window.open(url, "_blank", "noopener,noreferrer");
+                if (!win || win.closed || typeof win.closed === "undefined") {
+                    // Popup was blocked — fall back to same-tab navigation
+                    window.location.href = url;
+                }
             };
 
             card.addEventListener("click", play);
