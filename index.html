@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Source Game Launcher — 142 Free HTML5 Games</title>
+    <meta name="description" content="A fully open-source game launcher. 142 MIT-licensed HTML5 games, play instantly on GitHub Pages. No installs, no signups." />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">🎮</span>
+                <span class="logo-text">Open Source Game Launcher</span>
+            </div>
+            <div class="stats">
+                <span class="stat" id="stat-count">142</span> games
+                <span class="stat">100% open source</span>
+                <span class="stat">MIT licensed</span>
+            </div>
+            <div class="search-wrap">
+                <input type="text" id="search" placeholder="Search games…" autocomplete="off" />
+            </div>
+        </div>
+        <div class="subheader">
+            <span id="sub-text">Click any game to play it in a new tab</span>
+        </div>
+    </header>
+
+    <!-- Category filters -->
+    <nav class="filters" aria-label="Game categories">
+        <button class="filter-btn active" data-cat="all">All</button>
+        <!-- Category buttons injected by JS -->
+    </nav>
+
+    <!-- Game grid -->
+    <main class="grid" id="grid" role="grid" aria-label="Games">
+        <!-- Game cards injected by JS -->
+    </main>
+
+    <!-- Empty state -->
+    <div class="empty" id="empty" style="display:none;">
+        <p>No games match your search.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>🎮 <strong>Open Source Game Launcher</strong> — 142 MIT-licensed HTML5 games.</p>
+            <p>Source: <a href="https://github.com/sausi-7/games" target="_blank" rel="noopener">sausi-7/games</a> (MIT) &bull; Launcher: this repository (MIT)</p>
+            <p>Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> &bull; No server, no tracking, no hidden code.</p>
+            <p><a href="test.html">🧪 Run game test suite</a> &bull; <a href="games.json">View game manifest</a></p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

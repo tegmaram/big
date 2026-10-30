@@ -1,0 +1,2822 @@
+{
+  "version": "1.0.0",
+  "title": "Open Source Game Launcher",
+  "description": "142 free, open-source HTML5 games. Play instantly. No installs.",
+  "categories": [
+    {
+      "id": "puzzle",
+      "label": "Puzzle",
+      "emoji": "🧩",
+      "color": "#7c3aed"
+    },
+    {
+      "id": "arcade",
+      "label": "Arcade",
+      "emoji": "🕹️",
+      "color": "#ec4899"
+    },
+    {
+      "id": "shooter",
+      "label": "Shooter",
+      "emoji": "🎯",
+      "color": "#ef4444"
+    },
+    {
+      "id": "racing",
+      "label": "Racing",
+      "emoji": "🏎️",
+      "color": "#f59e0b"
+    },
+    {
+      "id": "sports",
+      "label": "Sports",
+      "emoji": "⚽",
+      "color": "#10b981"
+    },
+    {
+      "id": "platformer",
+      "label": "Platformer",
+      "emoji": "🏃",
+      "color": "#06b6d4"
+    },
+    {
+      "id": "casual",
+      "label": "Casual",
+      "emoji": "🎈",
+      "color": "#f472b6"
+    },
+    {
+      "id": "board",
+      "label": "Board",
+      "emoji": "♟️",
+      "color": "#64748b"
+    },
+    {
+      "id": "word-quiz",
+      "label": "Word & Quiz",
+      "emoji": "📝",
+      "color": "#3b82f6"
+    },
+    {
+      "id": "3d",
+      "label": "3D",
+      "emoji": "🌐",
+      "color": "#8b5cf6"
+    }
+  ],
+  "games": [
+    {
+      "id": "2048",
+      "name": "2048",
+      "category": "puzzle",
+      "path": "games/puzzle/2048/index.html",
+      "tech": "phaser",
+      "tags": [
+        "merge",
+        "numbers",
+        "classic"
+      ],
+      "description": "Slide tiles. Merge matching numbers. Reach 2048."
+    },
+    {
+      "id": "6oct",
+      "name": "6 Octagons",
+      "category": "puzzle",
+      "path": "games/puzzle/6oct/index.html",
+      "tech": "phaser",
+      "tags": [
+        "tiles",
+        "minimal"
+      ],
+      "description": "Octagon-tile sliding puzzle."
+    },
+    {
+      "id": "rock-paper-scissors",
+      "name": "Rock Paper Scissors",
+      "category": "board",
+      "path": "games/board/rock-paper-scissors/index.html",
+      "tech": "phaser",
+      "tags": [
+        "classic",
+        "quick"
+      ],
+      "description": "The timeless hand game vs the AI."
+    },
+    {
+      "id": "sudoku",
+      "name": "Sudoku",
+      "category": "puzzle",
+      "path": "games/puzzle/sudoku/index.html",
+      "tech": "html",
+      "tags": [
+        "logic",
+        "numbers",
+        "classic"
+      ],
+      "description": "Classic 9x9 number logic puzzle."
+    },
+    {
+      "id": "abhita",
+      "name": "Abhita",
+      "category": "arcade",
+      "path": "games/arcade/abhita/index.html",
+      "tech": "phaser",
+      "tags": [
+        "reflex",
+        "dodge"
+      ],
+      "description": "Reflex-driven dodge mini-game."
+    },
+    {
+      "id": "alien-battle",
+      "name": "Alien Battle",
+      "category": "shooter",
+      "path": "games/shooter/alien-battle/index.html",
+      "tech": "phaser",
+      "tags": [
+        "aliens",
+        "top-down",
+        "survival"
+      ],
+      "description": "Top-down alien shooter. Survive the swarm."
+    },
+    {
+      "id": "antigravity",
+      "name": "Anti-Gravity",
+      "category": "platformer",
+      "path": "games/platformer/antigravity/index.html",
+      "tech": "phaser",
+      "tags": [
+        "physics",
+        "gravity"
+      ],
+      "description": "Flip gravity to navigate hazards."
+    },
+    {
+      "id": "archer",
+      "name": "Archer",
+      "category": "sports",
+      "path": "games/sports/archer/index.html",
+      "tech": "html",
+      "tags": [
+        "bow",
+        "aim",
+        "precision"
+      ],
+      "description": "Aim, draw, and release. Hit your target."
+    },
+    {
+      "id": "balance-stack",
+      "name": "Balance Stack",
+      "category": "arcade",
+      "path": "games/arcade/balance-stack/index.html",
+      "tech": "phaser",
+      "tags": [
+        "stacking",
+        "balance"
+      ],
+      "description": "Stack blocks without toppling the tower."
+    },
+    {
+      "id": "basketball",
+      "name": "Basketball",
+      "category": "sports",
+      "path": "games/sports/basketball/index.html",
+      "tech": "phaser",
+      "tags": [
+        "hoops",
+        "arcade-sports"
+      ],
+      "description": "Arc the ball through the hoop."
+    },
+    {
+      "id": "bird-shooter",
+      "name": "Bird Shooter",
+      "category": "shooter",
+      "path": "games/shooter/bird-shooter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "aim",
+        "reflex"
+      ],
+      "description": "Track and shoot flying birds."
+    },
+    {
+      "id": "bomb-blast",
+      "name": "Bomb Blast",
+      "category": "arcade",
+      "path": "games/arcade/bomb-blast/index.html",
+      "tech": "phaser",
+      "tags": [
+        "explosions",
+        "timing"
+      ],
+      "description": "Time the blast to chain destruction."
+    },
+    {
+      "id": "boom-dots",
+      "name": "Boom Dots",
+      "category": "arcade",
+      "path": "games/arcade/boom-dots/index.html",
+      "tech": "phaser",
+      "tags": [
+        "chain",
+        "reflex"
+      ],
+      "description": "Tap to detonate dots and clear the screen."
+    },
+    {
+      "id": "bowling",
+      "name": "Bowling",
+      "category": "sports",
+      "path": "games/sports/bowling/index.html",
+      "tech": "phaser",
+      "tags": [
+        "pins",
+        "aim",
+        "sport"
+      ],
+      "description": "Knock down all the pins."
+    },
+    {
+      "id": "breakoid",
+      "name": "Breakoid",
+      "category": "arcade",
+      "path": "games/arcade/breakoid/index.html",
+      "tech": "phaser",
+      "tags": [
+        "brick",
+        "paddle",
+        "classic"
+      ],
+      "description": "Breakout-style brick smashing."
+    },
+    {
+      "id": "bubble-pop",
+      "name": "Bubble Pop",
+      "category": "casual",
+      "path": "games/casual/bubble-pop/index.html",
+      "tech": "phaser",
+      "tags": [
+        "match",
+        "bubbles",
+        "relaxing"
+      ],
+      "description": "Pop matching bubbles to score."
+    },
+    {
+      "id": "bubble-shooter",
+      "name": "Bubble Shooter",
+      "category": "casual",
+      "path": "games/casual/bubble-shooter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "match-3",
+        "shooter",
+        "classic"
+      ],
+      "description": "Shoot bubbles into matching color clusters."
+    },
+    {
+      "id": "bug-smasher",
+      "name": "Bug Smasher",
+      "category": "arcade",
+      "path": "games/arcade/bug-smasher/index.html",
+      "tech": "phaser",
+      "tags": [
+        "whack",
+        "reflex"
+      ],
+      "description": "Squash bugs before they reach the goal."
+    },
+    {
+      "id": "buttermilk",
+      "name": "Buttermilk",
+      "category": "casual",
+      "path": "games/casual/buttermilk/index.html",
+      "tech": "phaser",
+      "tags": [
+        "idle",
+        "pour",
+        "cute"
+      ],
+      "description": "Cute pour-and-mix idle game."
+    },
+    {
+      "id": "candy-crush",
+      "name": "Candy Crush",
+      "category": "casual",
+      "path": "games/casual/candy-crush/index.html",
+      "tech": "phaser",
+      "tags": [
+        "match-3",
+        "candy",
+        "classic"
+      ],
+      "description": "Match-3 candy puzzle."
+    },
+    {
+      "id": "candy-crusher",
+      "name": "Candy Crusher",
+      "category": "casual",
+      "path": "games/casual/candy-crusher/index.html",
+      "tech": "phaser",
+      "tags": [
+        "match",
+        "crush"
+      ],
+      "description": "Smash candy patterns for points."
+    },
+    {
+      "id": "cannon-blaster",
+      "name": "Cannon Blaster",
+      "category": "shooter",
+      "path": "games/shooter/cannon-blaster/index.html",
+      "tech": "phaser",
+      "tags": [
+        "cannon",
+        "physics",
+        "aim"
+      ],
+      "description": "Aim and fire cannonballs at targets."
+    },
+    {
+      "id": "cargo-stack",
+      "name": "Cargo Stack",
+      "category": "puzzle",
+      "path": "games/puzzle/cargo-stack/index.html",
+      "tech": "phaser",
+      "tags": [
+        "stacking",
+        "logistics"
+      ],
+      "description": "Pack cargo crates without overflow."
+    },
+    {
+      "id": "car-race",
+      "name": "Car Race",
+      "category": "racing",
+      "path": "games/racing/car-race/index.html",
+      "tech": "three",
+      "tags": [
+        "3d",
+        "cars",
+        "traffic"
+      ],
+      "description": "3D car-racing run with traffic dodging."
+    },
+    {
+      "id": "carrom",
+      "name": "Carrom",
+      "category": "board",
+      "path": "games/board/carrom/index.html",
+      "tech": "phaser",
+      "tags": [
+        "table",
+        "aim",
+        "classic"
+      ],
+      "description": "Pocket the carrom pieces with skill."
+    },
+    {
+      "id": "chess",
+      "name": "Chess",
+      "category": "board",
+      "path": "games/board/chess/index.html",
+      "tech": "phaser",
+      "tags": [
+        "strategy",
+        "classic"
+      ],
+      "description": "Classic chess vs the computer."
+    },
+    {
+      "id": "circle-path",
+      "name": "Circle Path",
+      "category": "arcade",
+      "path": "games/arcade/circle-path/index.html",
+      "tech": "phaser",
+      "tags": [
+        "timing",
+        "ring"
+      ],
+      "description": "Trace the rotating circle without slipping."
+    },
+    {
+      "id": "circuit-bulb",
+      "name": "Circuit Bulb",
+      "category": "puzzle",
+      "path": "games/puzzle/circuit-bulb/index.html",
+      "tech": "phaser",
+      "tags": [
+        "logic",
+        "wires"
+      ],
+      "description": "Wire circuits to light the bulb."
+    },
+    {
+      "id": "catch-me-if-you-can",
+      "name": "Catch Me If You Can",
+      "category": "arcade",
+      "path": "games/arcade/catch-me-if-you-can/index.html",
+      "tech": "phaser",
+      "tags": [
+        "chase",
+        "stealth"
+      ],
+      "description": "Outrun the chasers in a wide arena."
+    },
+    {
+      "id": "collector",
+      "name": "Collector",
+      "category": "arcade",
+      "path": "games/arcade/collector/index.html",
+      "tech": "phaser",
+      "tags": [
+        "coins",
+        "time-attack"
+      ],
+      "description": "Sweep up coins before time runs out."
+    },
+    {
+      "id": "color-dash",
+      "name": "Color Dash",
+      "category": "arcade",
+      "path": "games/arcade/color-dash/index.html",
+      "tech": "phaser",
+      "tags": [
+        "color-match",
+        "reflex"
+      ],
+      "description": "Match the player's color to pass each gate."
+    },
+    {
+      "id": "colour-pour",
+      "name": "Colour Pour",
+      "category": "puzzle",
+      "path": "games/puzzle/colour-pour/index.html",
+      "tech": "phaser",
+      "tags": [
+        "sort",
+        "liquid",
+        "relax"
+      ],
+      "description": "Sort liquids into single-color tubes."
+    },
+    {
+      "id": "connected",
+      "name": "Connected",
+      "category": "puzzle",
+      "path": "games/puzzle/connected/index.html",
+      "tech": "phaser",
+      "tags": [
+        "graph",
+        "logic"
+      ],
+      "description": "Link nodes without crossing lines."
+    },
+    {
+      "id": "cooking",
+      "name": "Cooking",
+      "category": "casual",
+      "path": "games/casual/cooking/index.html",
+      "tech": "phaser",
+      "tags": [
+        "timer",
+        "kitchen"
+      ],
+      "description": "Plate orders before the timer hits zero."
+    },
+    {
+      "id": "cool-platformer",
+      "name": "Cool Platformer",
+      "category": "platformer",
+      "path": "games/platformer/cool-platformer/index.html",
+      "tech": "phaser",
+      "tags": [
+        "jump",
+        "run",
+        "platform"
+      ],
+      "description": "Run, jump, and dash through hazards."
+    },
+    {
+      "id": "cosmic-cleaner",
+      "name": "Cosmic Cleaner",
+      "category": "3d",
+      "path": "games/3d/cosmic-cleaner/index.html",
+      "tech": "phaser",
+      "tags": [
+        "3d",
+        "space"
+      ],
+      "description": "3D space-junk vacuum-up game."
+    },
+    {
+      "id": "cricket-123",
+      "name": "Cricket 1-2-3",
+      "category": "sports",
+      "path": "games/sports/cricket-123/index.html",
+      "tech": "phaser",
+      "tags": [
+        "cricket",
+        "reflex"
+      ],
+      "description": "Bat through fast deliveries."
+    },
+    {
+      "id": "crossy-road",
+      "name": "Crossy Road",
+      "category": "arcade",
+      "path": "games/arcade/crossy-road/index.html",
+      "tech": "three",
+      "tags": [
+        "frogger",
+        "endless"
+      ],
+      "description": "Hop across roads, rivers, and rails."
+    },
+    {
+      "id": "crowd-control",
+      "name": "Crowd Control",
+      "category": "arcade",
+      "path": "games/arcade/crowd-control/index.html",
+      "tech": "phaser",
+      "tags": [
+        "growing",
+        "io-style"
+      ],
+      "description": "Steer your growing crowd through obstacles."
+    },
+    {
+      "id": "curve-snake",
+      "name": "Curve Snake",
+      "category": "arcade",
+      "path": "games/arcade/curve-snake/index.html",
+      "tech": "html",
+      "tags": [
+        "snake",
+        "trail"
+      ],
+      "description": "Snake-style game with smooth curve trails."
+    },
+    {
+      "id": "cut-rope",
+      "name": "Cut the Rope",
+      "category": "puzzle",
+      "path": "games/puzzle/cut-rope/index.html",
+      "tech": "phaser",
+      "tags": [
+        "physics",
+        "slice"
+      ],
+      "description": "Slice ropes to land the candy in the goal."
+    },
+    {
+      "id": "demon",
+      "name": "Demon",
+      "category": "arcade",
+      "path": "games/arcade/demon/index.html",
+      "tech": "phaser",
+      "tags": [
+        "survival",
+        "dark"
+      ],
+      "description": "Survive a horde of demonic enemies."
+    },
+    {
+      "id": "devil-king",
+      "name": "Devil King",
+      "category": "platformer",
+      "path": "games/platformer/devil-king/index.html",
+      "tech": "phaser",
+      "tags": [
+        "challenge",
+        "jump"
+      ],
+      "description": "Hop hazards in a devilish trial run."
+    },
+    {
+      "id": "dodge-enemy",
+      "name": "Dodge Enemy",
+      "category": "arcade",
+      "path": "games/arcade/dodge-enemy/index.html",
+      "tech": "phaser",
+      "tags": [
+        "dodge",
+        "reflex"
+      ],
+      "description": "Slip past charging enemies."
+    },
+    {
+      "id": "dodge-master",
+      "name": "Dodge Master",
+      "category": "arcade",
+      "path": "games/arcade/dodge-master/index.html",
+      "tech": "phaser",
+      "tags": [
+        "endless",
+        "dodge"
+      ],
+      "description": "Endless dodging at increasing speed."
+    },
+    {
+      "id": "doodle-jump",
+      "name": "Doodle Jump",
+      "category": "platformer",
+      "path": "games/platformer/doodle-jump/index.html",
+      "tech": "phaser",
+      "tags": [
+        "vertical",
+        "jump",
+        "classic"
+      ],
+      "description": "Jump from platform to platform — go higher."
+    },
+    {
+      "id": "dream-weaver",
+      "name": "Dream Weaver",
+      "category": "arcade",
+      "path": "games/arcade/dream-weaver/index.html",
+      "tech": "phaser",
+      "tags": [
+        "chill",
+        "trail"
+      ],
+      "description": "Weave glowing trails through a dreamscape."
+    },
+    {
+      "id": "ellars",
+      "name": "Ellars",
+      "category": "arcade",
+      "path": "games/arcade/ellars/index.html",
+      "tech": "phaser",
+      "tags": [
+        "abstract",
+        "dodge"
+      ],
+      "description": "Surreal arcade dodger."
+    },
+    {
+      "id": "endless-mafia",
+      "name": "Endless Mafia",
+      "category": "arcade",
+      "path": "games/arcade/endless-mafia/index.html",
+      "tech": "phaser",
+      "tags": [
+        "brawler",
+        "endless"
+      ],
+      "description": "Brawl through endless waves of mafia thugs."
+    },
+    {
+      "id": "endless-runner",
+      "name": "Endless Runner",
+      "category": "racing",
+      "path": "games/racing/endless-runner/index.html",
+      "tech": "phaser",
+      "tags": [
+        "runner",
+        "endless"
+      ],
+      "description": "Run forever. Dodge everything."
+    },
+    {
+      "id": "fighter-fury",
+      "name": "Fighter Fury",
+      "category": "shooter",
+      "path": "games/shooter/fighter-fury/index.html",
+      "tech": "phaser",
+      "tags": [
+        "jet",
+        "side-scroll"
+      ],
+      "description": "Side-scrolling jet shooter."
+    },
+    {
+      "id": "fighter-jet",
+      "name": "Fighter Jet",
+      "category": "shooter",
+      "path": "games/shooter/fighter-jet/index.html",
+      "tech": "phaser",
+      "tags": [
+        "jet",
+        "top-down"
+      ],
+      "description": "Top-down jet combat."
+    },
+    {
+      "id": "flappy",
+      "name": "Flappy",
+      "category": "arcade",
+      "path": "games/arcade/flappy/index.html",
+      "tech": "phaser",
+      "tags": [
+        "tap",
+        "one-button",
+        "classic"
+      ],
+      "description": "Tap to flap. Don't hit the pipes."
+    },
+    {
+      "id": "flip-jump",
+      "name": "Flip Jump",
+      "category": "platformer",
+      "path": "games/platformer/flip-jump/index.html",
+      "tech": "phaser",
+      "tags": [
+        "gravity",
+        "flip"
+      ],
+      "description": "Flip the world to land safely."
+    },
+    {
+      "id": "fly-monkey",
+      "name": "Fly Monkey",
+      "category": "arcade",
+      "path": "games/arcade/fly-monkey/index.html",
+      "tech": "phaser",
+      "tags": [
+        "swing",
+        "jungle"
+      ],
+      "description": "Swing the monkey through the canopy."
+    },
+    {
+      "id": "football",
+      "name": "Football",
+      "category": "sports",
+      "path": "games/sports/football/index.html",
+      "tech": "html",
+      "tags": [
+        "soccer",
+        "goals"
+      ],
+      "description": "Score goals in a fast-paced footy match."
+    },
+    {
+      "id": "forest-runner",
+      "name": "Forest Runner",
+      "category": "racing",
+      "path": "games/racing/forest-runner/index.html",
+      "tech": "phaser",
+      "tags": [
+        "runner",
+        "forest"
+      ],
+      "description": "Sprint through a forest — dodge logs and gaps."
+    },
+    {
+      "id": "four-dots",
+      "name": "Four Dots",
+      "category": "puzzle",
+      "path": "games/puzzle/four-dots/index.html",
+      "tech": "phaser",
+      "tags": [
+        "pattern",
+        "tap"
+      ],
+      "description": "Tap dots in the right pattern."
+    },
+    {
+      "id": "fruit-basket",
+      "name": "Fruit Basket",
+      "category": "casual",
+      "path": "games/casual/fruit-basket/index.html",
+      "tech": "phaser",
+      "tags": [
+        "catch",
+        "fruits",
+        "cute"
+      ],
+      "description": "Catch falling fruits in your basket."
+    },
+    {
+      "id": "fruit-cosmics",
+      "name": "Fruit Cosmics",
+      "category": "casual",
+      "path": "games/casual/fruit-cosmics/index.html",
+      "tech": "phaser",
+      "tags": [
+        "fruits",
+        "slash"
+      ],
+      "description": "Cosmic-themed fruit smasher."
+    },
+    {
+      "id": "fruit-merge",
+      "name": "Fruit Merge",
+      "category": "casual",
+      "path": "games/casual/fruit-merge/index.html",
+      "tech": "html",
+      "tags": [
+        "merge",
+        "suika",
+        "drop"
+      ],
+      "description": "Drop fruits — merge same kinds to evolve."
+    },
+    {
+      "id": "luma-bounce",
+      "name": "LumaBounce",
+      "category": "arcade",
+      "path": "games/arcade/luma-bounce/index.html",
+      "tech": "phaser",
+      "tags": [
+        "bounce",
+        "reflex"
+      ],
+      "description": "Bouncy reflex arcade game."
+    },
+    {
+      "id": "glass-step",
+      "name": "Glass Step",
+      "category": "arcade",
+      "path": "games/arcade/glass-step/index.html",
+      "tech": "phaser",
+      "tags": [
+        "squid-game",
+        "pick"
+      ],
+      "description": "Pick the safe glass tile. Don't fall."
+    },
+    {
+      "id": "gunman",
+      "name": "Gunman",
+      "category": "shooter",
+      "path": "games/shooter/gunman/index.html",
+      "tech": "phaser",
+      "tags": [
+        "western",
+        "quickdraw"
+      ],
+      "description": "Quick-draw gunfight game."
+    },
+    {
+      "id": "gun-run",
+      "name": "Gun Run",
+      "category": "shooter",
+      "path": "games/shooter/gun-run/index.html",
+      "tech": "phaser",
+      "tags": [
+        "run-gun",
+        "side-scroll"
+      ],
+      "description": "Run-and-gun side-scroller."
+    },
+    {
+      "id": "hex-puzzle",
+      "name": "Hex Puzzle",
+      "category": "puzzle",
+      "path": "games/puzzle/hex-puzzle/index.html",
+      "tech": "html",
+      "tags": [
+        "hex",
+        "blocks"
+      ],
+      "description": "Place hex blocks to clear the board."
+    },
+    {
+      "id": "hungry-player",
+      "name": "Hungry Player",
+      "category": "arcade",
+      "path": "games/arcade/hungry-player/index.html",
+      "tech": "phaser",
+      "tags": [
+        "eat",
+        "grow"
+      ],
+      "description": "Gobble food, dodge hazards, grow."
+    },
+    {
+      "id": "jump-dot",
+      "name": "Jump Dot",
+      "category": "arcade",
+      "path": "games/arcade/jump-dot/index.html",
+      "tech": "phaser",
+      "tags": [
+        "one-button",
+        "timing"
+      ],
+      "description": "Tap to jump the dot over rotating hazards."
+    },
+    {
+      "id": "kaiju-krush",
+      "name": "Kaiju Krush",
+      "category": "arcade",
+      "path": "games/arcade/kaiju-krush/index.html",
+      "tech": "phaser",
+      "tags": [
+        "destruction",
+        "kaiju"
+      ],
+      "description": "Smash through the city as a giant kaiju."
+    },
+    {
+      "id": "laser-bounce",
+      "name": "Laser Bounce",
+      "category": "puzzle",
+      "path": "games/puzzle/laser-bounce/index.html",
+      "tech": "phaser",
+      "tags": [
+        "lasers",
+        "reflect",
+        "logic"
+      ],
+      "description": "Reflect lasers to hit all targets."
+    },
+    {
+      "id": "link",
+      "name": "Link",
+      "category": "puzzle",
+      "path": "games/puzzle/link/index.html",
+      "tech": "phaser",
+      "tags": [
+        "match",
+        "mahjong"
+      ],
+      "description": "Link matching tiles by shortest path."
+    },
+    {
+      "id": "ludo",
+      "name": "Ludo",
+      "category": "board",
+      "path": "games/board/ludo/index.html",
+      "tech": "html",
+      "tags": [
+        "dice",
+        "classic",
+        "family"
+      ],
+      "description": "Classic Ludo — you vs 3 AI opponents."
+    },
+    {
+      "id": "mario",
+      "name": "Mario-Like",
+      "category": "platformer",
+      "path": "games/platformer/mario/index.html",
+      "tech": "phaser",
+      "tags": [
+        "platformer",
+        "retro"
+      ],
+      "description": "Side-scrolling platformer adventure."
+    },
+    {
+      "id": "math-quest",
+      "name": "Math Quest",
+      "category": "word-quiz",
+      "path": "games/word-quiz/math-quest/index.html",
+      "tech": "phaser",
+      "tags": [
+        "math",
+        "education",
+        "quick"
+      ],
+      "description": "Speed math challenge."
+    },
+    {
+      "id": "memory",
+      "name": "Memory",
+      "category": "puzzle",
+      "path": "games/puzzle/memory/index.html",
+      "tech": "phaser",
+      "tags": [
+        "memory",
+        "cards",
+        "classic"
+      ],
+      "description": "Flip cards. Find pairs."
+    },
+    {
+      "id": "memory-cards",
+      "name": "Memory Cards",
+      "category": "puzzle",
+      "path": "games/puzzle/memory-cards/index.html",
+      "tech": "phaser",
+      "tags": [
+        "memory",
+        "cards"
+      ],
+      "description": "Card-matching memory test."
+    },
+    {
+      "id": "number-merge",
+      "name": "Number Merge",
+      "category": "puzzle",
+      "path": "games/puzzle/number-merge/index.html",
+      "tech": "phaser",
+      "tags": [
+        "merge",
+        "numbers"
+      ],
+      "description": "Merge same numbers, climb the score."
+    },
+    {
+      "id": "one-car",
+      "name": "One Car",
+      "category": "racing",
+      "path": "games/racing/one-car/index.html",
+      "tech": "phaser",
+      "tags": [
+        "traffic",
+        "reflex"
+      ],
+      "description": "Steer one car through dense traffic."
+    },
+    {
+      "id": "orbital-outpost",
+      "name": "Orbital Outpost",
+      "category": "3d",
+      "path": "games/3d/orbital-outpost/index.html",
+      "tech": "phaser",
+      "tags": [
+        "3d",
+        "space",
+        "defense"
+      ],
+      "description": "3D space-station defense."
+    },
+    {
+      "id": "pacman",
+      "name": "Pac-Man",
+      "category": "arcade",
+      "path": "games/arcade/pacman/index.html",
+      "tech": "phaser",
+      "tags": [
+        "maze",
+        "classic"
+      ],
+      "description": "Eat dots. Avoid ghosts."
+    },
+    {
+      "id": "pairing",
+      "name": "Pairing",
+      "category": "puzzle",
+      "path": "games/puzzle/pairing/index.html",
+      "tech": "phaser",
+      "tags": [
+        "match",
+        "quick"
+      ],
+      "description": "Pair up matching items quickly."
+    },
+    {
+      "id": "parkour",
+      "name": "Parkour",
+      "category": "platformer",
+      "path": "games/platformer/parkour/index.html",
+      "tech": "phaser",
+      "tags": [
+        "parkour",
+        "run"
+      ],
+      "description": "Wall-run, slide, and vault forward."
+    },
+    {
+      "id": "pathfinder",
+      "name": "Pathfinder",
+      "category": "puzzle",
+      "path": "games/puzzle/pathfinder/index.html",
+      "tech": "phaser",
+      "tags": [
+        "maze",
+        "path"
+      ],
+      "description": "Solve maze paths under time pressure."
+    },
+    {
+      "id": "perfect-square",
+      "name": "Perfect Square",
+      "category": "puzzle",
+      "path": "games/puzzle/perfect-square/index.html",
+      "tech": "phaser",
+      "tags": [
+        "timing",
+        "precision"
+      ],
+      "description": "Tap when the square aligns perfectly."
+    },
+    {
+      "id": "pirates",
+      "name": "Pirates",
+      "category": "arcade",
+      "path": "games/arcade/pirates/index.html",
+      "tech": "phaser",
+      "tags": [
+        "pirates",
+        "ships"
+      ],
+      "description": "Sail and battle on the high seas."
+    },
+    {
+      "id": "planet-visitor",
+      "name": "Planet Visitor",
+      "category": "3d",
+      "path": "games/3d/planet-visitor/index.html",
+      "tech": "phaser",
+      "tags": [
+        "3d",
+        "space",
+        "explore"
+      ],
+      "description": "Land on alien planets in 3D."
+    },
+    {
+      "id": "planet-war",
+      "name": "Planet War",
+      "category": "3d",
+      "path": "games/3d/planet-war/index.html",
+      "tech": "phaser",
+      "tags": [
+        "3d",
+        "space",
+        "defense"
+      ],
+      "description": "Defend your planet from cosmic invaders."
+    },
+    {
+      "id": "projectile-enemy",
+      "name": "Projectile Enemy",
+      "category": "shooter",
+      "path": "games/shooter/projectile-enemy/index.html",
+      "tech": "phaser",
+      "tags": [
+        "bullet-hell",
+        "reflex"
+      ],
+      "description": "Dodge and counter ranged enemies."
+    },
+    {
+      "id": "quiz",
+      "name": "Quiz",
+      "category": "word-quiz",
+      "path": "games/word-quiz/quiz/index.html",
+      "tech": "phaser",
+      "tags": [
+        "trivia",
+        "education"
+      ],
+      "description": "Test your knowledge across categories."
+    },
+    {
+      "id": "red-light-green-light",
+      "name": "Red Light, Green Light",
+      "category": "arcade",
+      "path": "games/arcade/red-light-green-light/index.html",
+      "tech": "phaser",
+      "tags": [
+        "squid-game",
+        "reflex"
+      ],
+      "description": "Move on green. Freeze on red."
+    },
+    {
+      "id": "road-cross",
+      "name": "Road Cross",
+      "category": "arcade",
+      "path": "games/arcade/road-cross/index.html",
+      "tech": "phaser",
+      "tags": [
+        "frogger",
+        "timing"
+      ],
+      "description": "Cross busy roads safely."
+    },
+    {
+      "id": "road-fighter",
+      "name": "Road Fighter",
+      "category": "racing",
+      "path": "games/racing/road-fighter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "traffic",
+        "race",
+        "retro"
+      ],
+      "description": "Top-down race weaving through traffic."
+    },
+    {
+      "id": "robot-destruction",
+      "name": "Robot Destruction",
+      "category": "shooter",
+      "path": "games/shooter/robot-destruction/index.html",
+      "tech": "phaser",
+      "tags": [
+        "robots",
+        "blaster"
+      ],
+      "description": "Blast incoming robots to scrap."
+    },
+    {
+      "id": "screw-master",
+      "name": "Screw Master",
+      "category": "puzzle",
+      "path": "games/puzzle/screw-master/index.html",
+      "tech": "phaser",
+      "tags": [
+        "sort",
+        "mechanical"
+      ],
+      "description": "Unscrew and sort the metal pieces."
+    },
+    {
+      "id": "shadow-runner",
+      "name": "Shadow Runner",
+      "category": "racing",
+      "path": "games/racing/shadow-runner/index.html",
+      "tech": "phaser",
+      "tags": [
+        "runner",
+        "dark"
+      ],
+      "description": "Sprint through a shadow world."
+    },
+    {
+      "id": "shadow-shooter",
+      "name": "Shadow Shooter",
+      "category": "shooter",
+      "path": "games/shooter/shadow-shooter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "stealth",
+        "shooter"
+      ],
+      "description": "Pick off shadow enemies from cover."
+    },
+    {
+      "id": "shape-collector",
+      "name": "Shape Collector",
+      "category": "arcade",
+      "path": "games/arcade/shape-collector/index.html",
+      "tech": "phaser",
+      "tags": [
+        "shapes",
+        "match"
+      ],
+      "description": "Catch only the matching shapes."
+    },
+    {
+      "id": "shape-fitter",
+      "name": "Shape Fitter",
+      "category": "puzzle",
+      "path": "games/puzzle/shape-fitter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "shapes",
+        "kids"
+      ],
+      "description": "Fit shapes into the right slots."
+    },
+    {
+      "id": "shoot-enemy",
+      "name": "Shoot Enemy",
+      "category": "shooter",
+      "path": "games/shooter/shoot-enemy/index.html",
+      "tech": "phaser",
+      "tags": [
+        "aim",
+        "reflex"
+      ],
+      "description": "Pick off enemies before they reach you."
+    },
+    {
+      "id": "shooter",
+      "name": "Shooter",
+      "category": "shooter",
+      "path": "games/shooter/shooter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "arena",
+        "top-down"
+      ],
+      "description": "Top-down arena shooter."
+    },
+    {
+      "id": "signal-circuit",
+      "name": "Signal Circuit",
+      "category": "puzzle",
+      "path": "games/puzzle/signal-circuit/index.html",
+      "tech": "phaser",
+      "tags": [
+        "logic",
+        "circuit"
+      ],
+      "description": "Route signals through circuit gates."
+    },
+    {
+      "id": "sky-high",
+      "name": "Sky High",
+      "category": "arcade",
+      "path": "games/arcade/sky-high/index.html",
+      "tech": "phaser",
+      "tags": [
+        "climb",
+        "endless"
+      ],
+      "description": "Climb endlessly into the sky."
+    },
+    {
+      "id": "slide-puzzle",
+      "name": "Slide Puzzle",
+      "category": "puzzle",
+      "path": "games/puzzle/slide-puzzle/index.html",
+      "tech": "phaser",
+      "tags": [
+        "sliding",
+        "classic"
+      ],
+      "description": "Reassemble the image by sliding tiles."
+    },
+    {
+      "id": "snake",
+      "name": "Snake",
+      "category": "arcade",
+      "path": "games/arcade/snake/index.html",
+      "tech": "phaser",
+      "tags": [
+        "snake",
+        "classic"
+      ],
+      "description": "Eat. Grow. Don't hit yourself."
+    },
+    {
+      "id": "snake-and-ladder",
+      "name": "Snake & Ladder",
+      "category": "board",
+      "path": "games/board/snake-and-ladder/index.html",
+      "tech": "phaser",
+      "tags": [
+        "dice",
+        "family",
+        "classic"
+      ],
+      "description": "Roll the dice. Climb. Slide. Win."
+    },
+    {
+      "id": "sniper",
+      "name": "Sniper",
+      "category": "shooter",
+      "path": "games/shooter/sniper/index.html",
+      "tech": "phaser",
+      "tags": [
+        "scope",
+        "precision"
+      ],
+      "description": "Steady your scope. One shot, one kill."
+    },
+    {
+      "id": "space-fighter",
+      "name": "Space Fighter",
+      "category": "shooter",
+      "path": "games/shooter/space-fighter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "space",
+        "dogfight"
+      ],
+      "description": "Dogfight through asteroid fields."
+    },
+    {
+      "id": "spaceman",
+      "name": "Spaceman",
+      "category": "arcade",
+      "path": "games/arcade/spaceman/index.html",
+      "tech": "phaser",
+      "tags": [
+        "space",
+        "float"
+      ],
+      "description": "Float and survive in zero gravity."
+    },
+    {
+      "id": "space-waves",
+      "name": "Space Waves",
+      "category": "arcade",
+      "path": "games/arcade/space-waves/index.html",
+      "tech": "phaser",
+      "tags": [
+        "space",
+        "wave"
+      ],
+      "description": "Surf waves of space debris."
+    },
+    {
+      "id": "square-one",
+      "name": "Square One",
+      "category": "puzzle",
+      "path": "games/puzzle/square-one/index.html",
+      "tech": "phaser",
+      "tags": [
+        "sliding",
+        "minimal"
+      ],
+      "description": "Slide squares to clear the board."
+    },
+    {
+      "id": "stack-tower",
+      "name": "Stack Tower",
+      "category": "3d",
+      "path": "games/3d/stack-tower/index.html",
+      "tech": "three",
+      "tags": [
+        "3d",
+        "stack",
+        "timing"
+      ],
+      "description": "Stack 3D blocks for the highest tower."
+    },
+    {
+      "id": "stick-game",
+      "name": "Stick Game",
+      "category": "arcade",
+      "path": "games/arcade/stick-game/index.html",
+      "tech": "phaser",
+      "tags": [
+        "stick",
+        "draw"
+      ],
+      "description": "Draw sticks to bridge gaps."
+    },
+    {
+      "id": "stick-toss",
+      "name": "Stick Toss",
+      "category": "arcade",
+      "path": "games/arcade/stick-toss/index.html",
+      "tech": "phaser",
+      "tags": [
+        "aim",
+        "spin"
+      ],
+      "description": "Toss sticks at the spinning target."
+    },
+    {
+      "id": "straight-rush",
+      "name": "Straight Rush",
+      "category": "racing",
+      "path": "games/racing/straight-rush/index.html",
+      "tech": "phaser",
+      "tags": [
+        "sprint",
+        "reflex"
+      ],
+      "description": "Sprint forward — react to oncoming hazards."
+    },
+    {
+      "id": "survival-run",
+      "name": "Survival Run",
+      "category": "racing",
+      "path": "games/racing/survival-run/index.html",
+      "tech": "phaser",
+      "tags": [
+        "survival",
+        "runner"
+      ],
+      "description": "Outrun the danger as long as you can."
+    },
+    {
+      "id": "survivor",
+      "name": "Survivor",
+      "category": "shooter",
+      "path": "games/shooter/survivor/index.html",
+      "tech": "phaser",
+      "tags": [
+        "horde",
+        "survival",
+        "auto"
+      ],
+      "description": "Vampire-survivors-style horde survival."
+    },
+    {
+      "id": "table-tennis",
+      "name": "Table Tennis",
+      "category": "sports",
+      "path": "games/sports/table-tennis/index.html",
+      "tech": "phaser",
+      "tags": [
+        "pong",
+        "sport"
+      ],
+      "description": "Volley the ping-pong ball."
+    },
+    {
+      "id": "tap-target",
+      "name": "Tap Target",
+      "category": "arcade",
+      "path": "games/arcade/tap-target/index.html",
+      "tech": "phaser",
+      "tags": [
+        "tap",
+        "reflex"
+      ],
+      "description": "Tap targets before they vanish."
+    },
+    {
+      "id": "tee-shooter",
+      "name": "Tee Shooter",
+      "category": "shooter",
+      "path": "games/shooter/tee-shooter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "aim",
+        "tee"
+      ],
+      "description": "Tee-up trick-shot shooter."
+    },
+    {
+      "id": "tetris",
+      "name": "Tetris",
+      "category": "puzzle",
+      "path": "games/puzzle/tetris/index.html",
+      "tech": "html",
+      "tags": [
+        "blocks",
+        "classic"
+      ],
+      "description": "The classic falling-block puzzle."
+    },
+    {
+      "id": "that-level-again-1",
+      "name": "That Level Again — 1",
+      "category": "platformer",
+      "path": "games/platformer/that-level-again-1/index.html",
+      "tech": "phaser",
+      "tags": [
+        "trick",
+        "platformer"
+      ],
+      "description": "Trick-platformer level 1."
+    },
+    {
+      "id": "that-level-again-2",
+      "name": "That Level Again — 2",
+      "category": "platformer",
+      "path": "games/platformer/that-level-again-2/index.html",
+      "tech": "phaser",
+      "tags": [
+        "trick",
+        "platformer"
+      ],
+      "description": "Trick-platformer level 2."
+    },
+    {
+      "id": "that-level-again-3",
+      "name": "That Level Again — 3",
+      "category": "platformer",
+      "path": "games/platformer/that-level-again-3/index.html",
+      "tech": "phaser",
+      "tags": [
+        "trick",
+        "platformer"
+      ],
+      "description": "Trick-platformer level 3."
+    },
+    {
+      "id": "that-level-again-4",
+      "name": "That Level Again — 4",
+      "category": "platformer",
+      "path": "games/platformer/that-level-again-4/index.html",
+      "tech": "phaser",
+      "tags": [
+        "trick",
+        "platformer"
+      ],
+      "description": "Trick-platformer level 4."
+    },
+    {
+      "id": "that-level-again-5",
+      "name": "That Level Again — 5",
+      "category": "platformer",
+      "path": "games/platformer/that-level-again-5/index.html",
+      "tech": "phaser",
+      "tags": [
+        "trick",
+        "platformer"
+      ],
+      "description": "Trick-platformer level 5."
+    },
+    {
+      "id": "thunder-god",
+      "name": "Thunder God",
+      "category": "shooter",
+      "path": "games/shooter/thunder-god/index.html",
+      "tech": "phaser",
+      "tags": [
+        "thunder",
+        "power"
+      ],
+      "description": "Smite enemies with lightning."
+    },
+    {
+      "id": "tic-tac-toe",
+      "name": "Tic-Tac-Toe",
+      "category": "board",
+      "path": "games/board/tic-tac-toe/index.html",
+      "tech": "phaser",
+      "tags": [
+        "classic",
+        "quick"
+      ],
+      "description": "X's and O's. Three in a row wins."
+    },
+    {
+      "id": "tile-tap",
+      "name": "Tile Tap",
+      "category": "puzzle",
+      "path": "games/puzzle/tile-tap/index.html",
+      "tech": "phaser",
+      "tags": [
+        "tap",
+        "tile",
+        "classic"
+      ],
+      "description": "Tap only the dark tiles. Don't miss."
+    },
+    {
+      "id": "tower-shooter",
+      "name": "Tower Shooter",
+      "category": "shooter",
+      "path": "games/shooter/tower-shooter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "defense",
+        "tower"
+      ],
+      "description": "Defend your tower from waves of enemies."
+    },
+    {
+      "id": "trench-defence",
+      "name": "Trench Defence",
+      "category": "shooter",
+      "path": "games/shooter/trench-defence/index.html",
+      "tech": "phaser",
+      "tags": [
+        "defense",
+        "war"
+      ],
+      "description": "Hold the trench against the assault."
+    },
+    {
+      "id": "two-cars",
+      "name": "Two Cars",
+      "category": "racing",
+      "path": "games/racing/two-cars/index.html",
+      "tech": "phaser",
+      "tags": [
+        "dual",
+        "reflex"
+      ],
+      "description": "Steer two cars at once. Catch & dodge."
+    },
+    {
+      "id": "two-cars-ai",
+      "name": "Two Cars AI",
+      "category": "racing",
+      "path": "games/racing/two-cars-ai/index.html",
+      "tech": "phaser",
+      "tags": [
+        "dual",
+        "ai"
+      ],
+      "description": "AI-twist on the two-cars classic."
+    },
+    {
+      "id": "unruly",
+      "name": "Unruly",
+      "category": "puzzle",
+      "path": "games/puzzle/unruly/index.html",
+      "tech": "phaser",
+      "tags": [
+        "logic",
+        "binary"
+      ],
+      "description": "Place tiles by no-three-in-a-row rules."
+    },
+    {
+      "id": "vaccine-shooter",
+      "name": "Vaccine Shooter",
+      "category": "shooter",
+      "path": "games/shooter/vaccine-shooter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "health",
+        "shooter"
+      ],
+      "description": "Shoot viruses with your vaccine gun."
+    },
+    {
+      "id": "whack-a-bug",
+      "name": "Whack-a-Bug",
+      "category": "arcade",
+      "path": "games/arcade/whack-a-bug/index.html",
+      "tech": "phaser",
+      "tags": [
+        "whack",
+        "reflex"
+      ],
+      "description": "Bonk the bugs as they pop up."
+    },
+    {
+      "id": "wordle",
+      "name": "Wordlee",
+      "category": "word-quiz",
+      "path": "games/word-quiz/wordle/index.html",
+      "tech": "phaser",
+      "tags": [
+        "wordle",
+        "letters"
+      ],
+      "description": "Guess the 5-letter word in 6 tries."
+    },
+    {
+      "id": "words-of-wonder",
+      "name": "Words of Wonder",
+      "category": "word-quiz",
+      "path": "games/word-quiz/words-of-wonder/index.html",
+      "tech": "phaser",
+      "tags": [
+        "letters",
+        "spelling"
+      ],
+      "description": "Build words from a wheel of letters."
+    },
+    {
+      "id": "penalty",
+      "name": "Penalty Shootout",
+      "category": "sports",
+      "path": "games/sports/penalty/index.html",
+      "tech": "phaser",
+      "tags": [
+        "soccer",
+        "quick"
+      ],
+      "description": "One-on-one penalty kicks vs the keeper."
+    },
+    {
+      "id": "swipe-assassin",
+      "name": "Swipe Assassin",
+      "category": "arcade",
+      "path": "games/arcade/swipe-assassin/index.html",
+      "tech": "html",
+      "tags": [
+        "swipe",
+        "slash"
+      ],
+      "description": "Swipe to slice incoming threats."
+    },
+    {
+      "id": "level-devil",
+      "name": "Level Devil",
+      "category": "platformer",
+      "path": "games/platformer/level-devil/index.html",
+      "tech": "three",
+      "tags": [
+        "trick",
+        "platformer"
+      ],
+      "description": "Trickster platformer that hates you."
+    },
+    {
+      "id": "line-trap",
+      "name": "Line Trap",
+      "category": "puzzle",
+      "path": "games/puzzle/line-trap/index.html",
+      "tech": "html",
+      "tags": [
+        "draw",
+        "minimal"
+      ],
+      "description": "Trap the dot inside your line."
+    },
+    {
+      "id": "window-shooter",
+      "name": "Window Shooter",
+      "category": "shooter",
+      "path": "games/shooter/window-shooter/index.html",
+      "tech": "phaser",
+      "tags": [
+        "aim",
+        "reflex"
+      ],
+      "description": "Pick off enemies through the window."
+    },
+    {
+      "id": "survival-race",
+      "name": "Survival Race",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/survival-race",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "car",
+        "3d",
+        "external"
+      ],
+      "description": "3D car survival racing game (opens in new tab — external link)"
+    },
+    {
+      "id": "driving-games-nitro-car",
+      "name": "Nitro Car",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/driving-games/nitro-car",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "driving",
+        "cars",
+        "external"
+      ],
+      "description": "Nitro-fueled car driving game (opens in new tab — external link)"
+    },
+    {
+      "id": "gunspin",
+      "name": "Gunspin",
+      "category": "shooter",
+      "path": "https://sites.google.com/view/drive-u-7-home/gunspin",
+      "tech": "external",
+      "tags": [
+        "shooter",
+        "physics",
+        "arcade",
+        "external"
+      ],
+      "description": "Spin your gun and shoot to fly as far as possible (opens in new tab — external link)"
+    },
+    {
+      "id": "death-run",
+      "name": "Death Run",
+      "category": "platformer",
+      "path": "https://sites.google.com/view/drive-u-7-home/death-run",
+      "tech": "external",
+      "tags": [
+        "platformer",
+        "obstacle",
+        "reflex",
+        "external"
+      ],
+      "description": "Obstacle course death run game (opens in new tab — external link)"
+    },
+    {
+      "id": "driving-games-unreal-drift",
+      "name": "Unreal Drift",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/driving-games/unreal-drift",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "drift",
+        "3d",
+        "external"
+      ],
+      "description": "Unreal engine drift racing (opens in new tab — external link)"
+    },
+    {
+      "id": "driving-games-mad-pursuit",
+      "name": "Mad Pursuit",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/driving-games/mad-pursuit",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "pursuit",
+        "cars",
+        "external"
+      ],
+      "description": "High-speed police pursuit racing (opens in new tab — external link)"
+    },
+    {
+      "id": "drift-ru",
+      "name": "Drift Race",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/drift-ru",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "drift",
+        "cars",
+        "external"
+      ],
+      "description": "Drift racing game (opens in new tab — external link)"
+    },
+    {
+      "id": "real-kart",
+      "name": "Real Kart",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/real-kart",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "kart",
+        "3d",
+        "external"
+      ],
+      "description": "Kart racing game (opens in new tab — external link)"
+    },
+    {
+      "id": "driving-games-asphalt-rush",
+      "name": "Asphalt Rush",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/driving-games/asphalt-rush",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "asphalt",
+        "cars",
+        "external"
+      ],
+      "description": "Asphalt street racing (opens in new tab — external link)"
+    },
+    {
+      "id": "bus-simulator",
+      "name": "Bus Simulator",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/bus-simulator",
+      "tech": "external",
+      "tags": [
+        "simulation",
+        "bus",
+        "driving",
+        "external"
+      ],
+      "description": "Bus driving simulator (opens in new tab — external link)"
+    },
+    {
+      "id": "truck-simulator",
+      "name": "Truck Simulator",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/truck-simulator",
+      "tech": "external",
+      "tags": [
+        "simulation",
+        "truck",
+        "driving",
+        "external"
+      ],
+      "description": "Truck driving simulator (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-tropical-rider-3d",
+      "name": "Summer Rider",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/tropical-rider-3d",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "bike",
+        "3d",
+        "external"
+      ],
+      "description": "Tropical 3D bike racing (opens in new tab — external link)"
+    },
+    {
+      "id": "moto-x3m-winter",
+      "name": "Moto X3M Winter",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/moto-x3m-winter",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "motorcycle",
+        "winter",
+        "external"
+      ],
+      "description": "Motorcycle stunt racing in winter (opens in new tab — external link)"
+    },
+    {
+      "id": "car-vs-police",
+      "name": "Car vs Police!",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/car-vs-police",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "chase",
+        "cars",
+        "external"
+      ],
+      "description": "Chase and evade the police (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-jetfighter-simulator",
+      "name": "JetFighter Simulator",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/jetfighter-simulator",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "jet",
+        "simulator",
+        "external"
+      ],
+      "description": "Jet fighter flight simulator (opens in new tab — external link)"
+    },
+    {
+      "id": "race-2",
+      "name": "Race 2",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/race-2",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "cars",
+        "external"
+      ],
+      "description": "Car racing game (opens in new tab — external link)"
+    },
+    {
+      "id": "basket-random",
+      "name": "Basket Random",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/basket-random",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "basketball",
+        "2player",
+        "external"
+      ],
+      "description": "Random physics basketball game (opens in new tab — external link)"
+    },
+    {
+      "id": "soccer-random",
+      "name": "Soccer Random",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/soccer-random",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "soccer",
+        "2player",
+        "external"
+      ],
+      "description": "Random physics soccer game (opens in new tab — external link)"
+    },
+    {
+      "id": "volley-random",
+      "name": "Volley Random",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/volley-random",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "volleyball",
+        "2player",
+        "external"
+      ],
+      "description": "Random physics volleyball game (opens in new tab — external link)"
+    },
+    {
+      "id": "boxing-random",
+      "name": "Boxing Random",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/boxing-random",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "boxing",
+        "2player",
+        "external"
+      ],
+      "description": "Random physics boxing game (opens in new tab — external link)"
+    },
+    {
+      "id": "soccer-bros-2",
+      "name": "Soccer Bros 2",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/soccer-bros-2",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "soccer",
+        "2player",
+        "external"
+      ],
+      "description": "Soccer Bros 2 multiplayer (opens in new tab — external link)"
+    },
+    {
+      "id": "soccer-aim",
+      "name": "Soccer Aim",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/soccer-aim",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "soccer",
+        "aim",
+        "external"
+      ],
+      "description": "Soccer aiming and shooting (opens in new tab — external link)"
+    },
+    {
+      "id": "soccer-2026",
+      "name": "Soccer 2026",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/soccer-2026",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "soccer",
+        "2026",
+        "external"
+      ],
+      "description": "Soccer 2026 game (opens in new tab — external link)"
+    },
+    {
+      "id": "real-pool-3d",
+      "name": "Real Pool 3D",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/real-pool-3d",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "pool",
+        "3d",
+        "external"
+      ],
+      "description": "3D pool/billiards game (opens in new tab — external link)"
+    },
+    {
+      "id": "basketball-stars",
+      "name": "Basketball Stars",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/basketball-stars",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "basketball",
+        "external"
+      ],
+      "description": "Basketball Stars game (opens in new tab — external link)"
+    },
+    {
+      "id": "archers",
+      "name": "Archers",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/archers",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "archery",
+        "external"
+      ],
+      "description": "Archery game (opens in new tab — external link)"
+    },
+    {
+      "id": "archers-heroes",
+      "name": "Archers Heroes",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/archers-heroes",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "archery",
+        "external"
+      ],
+      "description": "Archery heroes game (opens in new tab — external link)"
+    },
+    {
+      "id": "stick-archers-battle-1",
+      "name": "Stick Archers Battle",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/stick-archers-battle_1",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "archery",
+        "stick",
+        "external"
+      ],
+      "description": "Stick figure archery battle (opens in new tab — external link)"
+    },
+    {
+      "id": "snow-rider",
+      "name": "Snow Rider",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/snow-rider",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "snow",
+        "sled",
+        "external"
+      ],
+      "description": "Snow sledding arcade game (opens in new tab — external link)"
+    },
+    {
+      "id": "paper-io-2",
+      "name": "Paper.io 2",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/paper-io-2",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "io",
+        "territory",
+        "external"
+      ],
+      "description": "Territory capture io game (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-slither-io-2",
+      "name": "Slither.io 2",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/slither-io-2",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "io",
+        "snake",
+        "external"
+      ],
+      "description": "Snake io multiplayer game (opens in new tab — external link)"
+    },
+    {
+      "id": "spiral-roll",
+      "name": "Spiral Roll",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/spiral-roll",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "roll",
+        "puzzle",
+        "external"
+      ],
+      "description": "Spiral rolling puzzle game (opens in new tab — external link)"
+    },
+    {
+      "id": "flip-rush",
+      "name": "Flip Rush",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/flip-rush",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "flip",
+        "reflex",
+        "external"
+      ],
+      "description": "Flip and rush arcade game (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-jump-or-fall",
+      "name": "Jump or Fall",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/jump-or-fall",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "jump",
+        "platformer",
+        "external"
+      ],
+      "description": "Jump or fall platformer (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-rooftop-run",
+      "name": "Rooftop Run",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/rooftop-run",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "run",
+        "rooftop",
+        "external"
+      ],
+      "description": "Rooftop running game (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-flippers",
+      "name": "Back Flippers",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/flippers",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "flip",
+        "acrobatics",
+        "external"
+      ],
+      "description": "Back flip acrobatics game (opens in new tab — external link)"
+    },
+    {
+      "id": "knife-hit",
+      "name": "Knife Hit",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/knife-hit",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "knife",
+        "throw",
+        "external"
+      ],
+      "description": "Knife throwing game (opens in new tab — external link)"
+    },
+    {
+      "id": "67-clicker",
+      "name": "67 Clicker",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/67-clicker",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "clicker",
+        "idle",
+        "external"
+      ],
+      "description": "Clicker idle game (opens in new tab — external link)"
+    },
+    {
+      "id": "cluster-rush",
+      "name": "Cluster Rush",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/cluster-rush",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "rush",
+        "3d",
+        "external"
+      ],
+      "description": "Cluster rush 3D game (opens in new tab — external link)"
+    },
+    {
+      "id": "obby-ambot",
+      "name": "Obby Bots",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/obby-ambot",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "obby",
+        "robots",
+        "external"
+      ],
+      "description": "Obby obstacle course with bots (opens in new tab — external link)"
+    },
+    {
+      "id": "planet-destroyer",
+      "name": "Planet Destroyer",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/planet-destroyer",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "space",
+        "destroy",
+        "external"
+      ],
+      "description": "Destroy planets arcade game (opens in new tab — external link)"
+    },
+    {
+      "id": "chicken-royale",
+      "name": "Chicken Royale",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/chicken-royale",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "chicken",
+        "royale",
+        "external"
+      ],
+      "description": "Chicken battle royale (opens in new tab — external link)"
+    },
+    {
+      "id": "zomblox",
+      "name": "Zomblox",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/zomblox",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "zombie",
+        "3d",
+        "external"
+      ],
+      "description": "Zombie block survival game (opens in new tab — external link)"
+    },
+    {
+      "id": "tsunami-brainrots",
+      "name": "Tsunami Brainrots",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/tsunami-brainrots",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "tsunami",
+        "brainrot",
+        "external"
+      ],
+      "description": "Tsunami survival game (opens in new tab — external link)"
+    },
+    {
+      "id": "shrek-escape-from-the-swamp",
+      "name": "Shrek Escape",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/shrek-escape-from-the-swamp",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "shrek",
+        "escape",
+        "external"
+      ],
+      "description": "Escape from the swamp (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-shrek-my-neighbor",
+      "name": "Shrek: My Neighbor",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/shrek-my-neighbor",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "shrek",
+        "horror",
+        "external"
+      ],
+      "description": "Shrek horror game (opens in new tab — external link)"
+    },
+    {
+      "id": "scary-shawarma-kiosk",
+      "name": "Scary Shawarma Kiosk",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/scary-shawarma-kiosk",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "horror",
+        "shawarma",
+        "external"
+      ],
+      "description": "Scary shawarma kiosk game (opens in new tab — external link)"
+    },
+    {
+      "id": "abnormal-house",
+      "name": "Abnormal House",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/abnormal-house",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "horror",
+        "house",
+        "external"
+      ],
+      "description": "Abnormal house horror game (opens in new tab — external link)"
+    },
+    {
+      "id": "taco-stand",
+      "name": "Taco Stand",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/taco-stand",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "cooking",
+        "taco",
+        "external"
+      ],
+      "description": "Taco stand cooking game (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-delivery",
+      "name": "Delivery Mystery",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/delivery",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "delivery",
+        "mystery",
+        "external"
+      ],
+      "description": "Delivery mystery game (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-buckshot-roulette",
+      "name": "Buckshot Roulette",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/buckshot-roulette",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "roulette",
+        "horror",
+        "external"
+      ],
+      "description": "Buckshot roulette horror game (opens in new tab — external link)"
+    },
+    {
+      "id": "granny",
+      "name": "Granny",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/granny",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "horror",
+        "escape",
+        "external"
+      ],
+      "description": "Granny horror escape game (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-level-67",
+      "name": "Level 67",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/level-67",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "level",
+        "puzzle",
+        "external"
+      ],
+      "description": "Level 67 puzzle game (opens in new tab — external link)"
+    },
+    {
+      "id": "maggar-io",
+      "name": "Maggar.io",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/maggar-io",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "io",
+        "multiplayer",
+        "external"
+      ],
+      "description": "Maggar.io multiplayer game (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-gvibes",
+      "name": "Go Vibes",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/gvibes",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "vibes",
+        "casual",
+        "external"
+      ],
+      "description": "Casual vibes game (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-duel-simulator",
+      "name": "Duel Simulator",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/duel-simulator",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "duel",
+        "simulator",
+        "external"
+      ],
+      "description": "Duel simulator game (opens in new tab — external link)"
+    },
+    {
+      "id": "only-up",
+      "name": "Only Up!",
+      "category": "platformer",
+      "path": "https://sites.google.com/view/drive-u-7-home/only-up",
+      "tech": "external",
+      "tags": [
+        "platformer",
+        "climb",
+        "3d",
+        "external"
+      ],
+      "description": "Only Up! climbing game (opens in new tab — external link)"
+    },
+    {
+      "id": "search-for-the-needle",
+      "name": "Search for the Needle",
+      "category": "puzzle",
+      "path": "https://sites.google.com/view/drive-u-7-home/search-for-the-needle",
+      "tech": "external",
+      "tags": [
+        "puzzle",
+        "search",
+        "hidden",
+        "external"
+      ],
+      "description": "Hidden object needle search (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-meme-tash",
+      "name": "Meme: Tash",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/meme-tash",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "meme",
+        "card",
+        "external"
+      ],
+      "description": "Meme card game (opens in new tab — external link)"
+    },
+    {
+      "id": "rocketgoal-io",
+      "name": "RocketGoal.io",
+      "category": "sports",
+      "path": "https://sites.google.com/view/drive-u-7-home/rocketgoal-io",
+      "tech": "external",
+      "tags": [
+        "sports",
+        "soccer",
+        "io",
+        "external"
+      ],
+      "description": "Rocket-powered soccer io (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-vavex",
+      "name": "Wavex",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/vavex",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "wave",
+        "casual",
+        "external"
+      ],
+      "description": "Wave casual game (opens in new tab — external link)"
+    },
+    {
+      "id": "forest-survival",
+      "name": "Forest Survival",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/forest-survival",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "survival",
+        "forest",
+        "external"
+      ],
+      "description": "Forest survival game (opens in new tab — external link)"
+    },
+    {
+      "id": "keyboard-escape",
+      "name": "Keyboard Escape",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/keyboard-escape",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "keyboard",
+        "escape",
+        "external"
+      ],
+      "description": "Keyboard-based escape game (opens in new tab — external link)"
+    },
+    {
+      "id": "cs-1-6",
+      "name": "CS 1.6",
+      "category": "shooter",
+      "path": "https://sites.google.com/view/drive-u-7-home/cs-1-6",
+      "tech": "external",
+      "tags": [
+        "shooter",
+        "fps",
+        "counter-strike",
+        "external"
+      ],
+      "description": "Counter-Strike 1.6 browser (opens in new tab — external link)"
+    },
+    {
+      "id": "cs-2-surf",
+      "name": "CS 2 Surf",
+      "category": "shooter",
+      "path": "https://sites.google.com/view/drive-u-7-home/cs-2-surf",
+      "tech": "external",
+      "tags": [
+        "shooter",
+        "fps",
+        "surf",
+        "external"
+      ],
+      "description": "CS 2 surf game (opens in new tab — external link)"
+    },
+    {
+      "id": "ultrapin",
+      "name": "Ultrakill",
+      "category": "shooter",
+      "path": "https://sites.google.com/view/drive-u-7-home/ultrapin",
+      "tech": "external",
+      "tags": [
+        "shooter",
+        "fps",
+        "ultra",
+        "external"
+      ],
+      "description": "Ultrakill-style FPS (opens in new tab — external link)"
+    },
+    {
+      "id": "supermarket-simulator",
+      "name": "Supermarket Sim",
+      "category": "casual",
+      "path": "https://sites.google.com/view/drive-u-7-home/supermarket-simulator",
+      "tech": "external",
+      "tags": [
+        "casual",
+        "simulator",
+        "supermarket",
+        "external"
+      ],
+      "description": "Supermarket simulator (opens in new tab — external link)"
+    },
+    {
+      "id": "spider-hero",
+      "name": "Spider Hero",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/spider-hero",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "spider",
+        "hero",
+        "external"
+      ],
+      "description": "Spider hero game (opens in new tab — external link)"
+    },
+    {
+      "id": "gta",
+      "name": "GTA Simulator",
+      "category": "racing",
+      "path": "https://sites.google.com/view/drive-u-7-home/gta",
+      "tech": "external",
+      "tags": [
+        "racing",
+        "gta",
+        "simulator",
+        "external"
+      ],
+      "description": "GTA-style simulator (opens in new tab — external link)"
+    },
+    {
+      "id": "war-the-knights",
+      "name": "War the Knights",
+      "category": "strategy",
+      "path": "https://sites.google.com/view/drive-u-7-home/war-the-knights",
+      "tech": "external",
+      "tags": [
+        "strategy",
+        "knights",
+        "war",
+        "external"
+      ],
+      "description": "Knight war strategy game (opens in new tab — external link)"
+    },
+    {
+      "id": "dig-out-of-prison",
+      "name": "Dig out of Prison",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/dig-out-of-prison",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "prison",
+        "escape",
+        "external"
+      ],
+      "description": "Dig out of prison escape (opens in new tab — external link)"
+    },
+    {
+      "id": "new-games-leave-2-escape-from-prison",
+      "name": "Escape from Prison",
+      "category": "arcade",
+      "path": "https://sites.google.com/view/drive-u-7-home/new-games/leave-2-escape-from-prison",
+      "tech": "external",
+      "tags": [
+        "arcade",
+        "prison",
+        "escape",
+        "external"
+      ],
+      "description": "Escape from prison game (opens in new tab — external link)"
+    },
+    {
+      "id": "red-vs-blue-4",
+      "name": "Red vs Blue 4",
+      "category": "shooter",
+      "path": "https://sites.google.com/view/drive-u-7-home/red-vs-blue-4",
+      "tech": "external",
+      "tags": [
+        "shooter",
+        "team",
+        "fps",
+        "external"
+      ],
+      "description": "Red vs Blue team shooter (opens in new tab — external link)"
+    }
+  ]
+}
