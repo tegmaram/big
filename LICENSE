@@ -1,21 +1,62 @@
-MIT License
+Jamal Craft 26.3 — private fan build
+Copyright (c) 2026 the Jamal Craft group
 
-Copyright (c) 2026 Saurabh Singh
+This file covers ONLY the original work in this project: the Jamal Craft name and
+logo, the HTML shell changes, the mobile shell, the build/server/packaging tools,
+the original touch-control artwork, and the documentation.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+that original work, to deal in it without restriction, including without
+limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of it, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+copies or substantial portions of the original work.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+THE ORIGINAL WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE ORIGINAL WORK OR THE USE OR OTHER DEALINGS IN IT.
+
+===========================================================================
+WHAT THIS LICENSE DOES NOT COVER
+===========================================================================
+
+1. MINECRAFT. Minecraft: Java Edition, Minecraft: Bedrock Edition, their code,
+   textures, sounds, fonts and other assets are Copyright Mojang Synergies AB /
+   Microsoft. They are proprietary and governed by the Minecraft EULA:
+   https://www.minecraft.net/en-us/article/minecraft-eula
+   The game payload inside JamalCraft-26.3.html contains Mojang code and assets.
+   This project does not claim ownership of it and cannot grant you any rights
+   to it. You are expected to own Minecraft to use it.
+
+2. EAGLERCRAFT. The browser client payload is the community Eaglercraft 26.3
+   port ("zeus/master", build 26.3-fe8f1237-815f7813), which descends from the
+   Eaglercraft / EaglercraftX work of lax1dude, ayunami2000 and later porters.
+   It is not ours and is not covered by the MIT grant above. Upstream ships no
+   single consolidated license file; source headers carry a BSD-2-Clause-style
+   warranty disclaimer. Keep the original attribution intact.
+
+3. THIRD-PARTY CODE. TeaVM (Apache-2.0), brotli-dec-wasm (MIT/Apache-2.0) and
+   the touch-layer code adapted from terry65536/bedrock-touch-ui (MIT) remain
+   under their own terms. The MIT text above also applies to terry65536's touch
+   layer, Copyright (c) 2026 terry65536.
+
+4. TRADEMARKS. Minecraft, Mojang, Bedrock, Microsoft and Eaglercraft are
+   trademarks or names of their respective owners. This is an unofficial fan
+   project. It is not affiliated with, endorsed by, sponsored by, or approved by
+   Mojang, Microsoft or the Eaglercraft project.
+
+===========================================================================
+PRIVATE USE
+===========================================================================
+
+This build is for a private group of friends. Do not sell it, do not put the
+game payload on a public download site, and do not present it as an official
+Minecraft product. The Eaglercraft ecosystem is actively DMCA-taken-down; keep
+your own copy. If you want to publish something publicly, publish only the
+original tooling/mobile shell in this repository, without the game payload.
+
+See NOTICE for the full component-by-component attribution.

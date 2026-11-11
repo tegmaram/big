@@ -1,0 +1,30 @@
+Jamal Craft 26.3 - how to play
+================================
+
+OFFLINE (the single HTML file)
+  Put JamalCraft-26.3.html on local storage (not a cloud/network drive).
+  Open it in Chrome, Edge, Firefox or Safari. First boot takes 20-60 s.
+  Phones: turn the phone sideways. Give the tab 3-4 GB of free RAM.
+
+LAN / WEB (the split build)
+  Do NOT double-click index.html - its game files are Brotli sidecars and need
+  a real HTTP server.
+  Windows: double-click start-server.bat
+  macOS:   double-click start-server.command (or ./start-server.sh)
+  Linux:   ./start-server.sh
+  Then open the URL it prints, on this PC or on any phone/PC on the same WiFi.
+  Type the PIN once per device if one is shown.
+
+PHONES
+  Landscape is required. The Jamal Craft touch layer gives you a joystick,
+  jump/sneak buttons, inventory/chat/pause chips and a tap-able hotbar.
+  If the touch layout is wrong for your device, add ?touch=native to the URL
+  (or ?touch=bedrock to force the custom layer). iPhone: Share -> Add to Home
+  Screen for fullscreen without the URL bar.
+
+PRIVATE
+  This is a private fan build. Do not upload the game payloads to a public host
+  and do not sell it. See LICENSE and NOTICE. Not affiliated with Mojang or
+  Microsoft. Minecraft is a trademark of Mojang Synergies AB / Microsoft.
+
+Worlds are stored in the browser. Use Export World before clearing site data.

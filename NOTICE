@@ -1,0 +1,93 @@
+NOTICE — third-party components, attribution and legal position
+================================================================
+
+Jamal Craft 26.3 is an unofficial, private fan build. The MIT license in
+LICENSE covers only the original Jamal Craft tooling, mobile shell, artwork and
+documentation. Everything listed below belongs to somebody else.
+
+
+1. Eaglercraft 26.3 client
+--------------------------
+Build tag:  26.3-fe8f1237-815f7813 ("zeus/master"), compiled 2026-11-08
+Base file:  jamalcraft source HTML, 78,269,278 bytes
+Upstream:   eaglercraft.com — https://eaglercraft.com/play
+
+Lineage: lax1dude (Eaglercraft / EaglercraftX) → ayunami2000 → the community
+26.x "zeus/master" port. The compiled client contains Minecraft Java Edition
+26.3 code and assets, compiled to WebAssembly by TeaVM.
+
+The upstream repositories ship no single consolidated LICENSE file. Individual
+source files carry a BSD-2-Clause-style warranty disclaimer stamped
+"Copyright (c) 2022-2026 lax1dude / Eagler". Those terms continue to apply to
+the client payload. The Jamal Craft rebrand is cosmetic; credit stays with the
+original authors.
+
+The game payload was not edited by this project. The build tool only extracts
+the already-compressed payloads from their base64 container and serves them as
+sidecar files (or keeps them inline in the offline build). Every payload's
+SHA-256 is recorded in dist/web/build-info.json and can be compared against the
+extracted base64 bytes.
+
+
+2. Minecraft
+------------
+Minecraft: Java Edition and Minecraft: Bedrock Edition, including all code,
+textures, sounds, fonts and other assets, are Copyright Mojang Synergies AB /
+Microsoft. They are proprietary. Use is governed by the Minecraft EULA:
+https://www.minecraft.net/en-us/article/minecraft-eula
+
+This project distributes a private fan build. It does not claim ownership of
+Minecraft, does not grant a Minecraft license, and is not affiliated with,
+endorsed by, sponsored by or approved by Mojang or Microsoft. You are expected
+to own Minecraft to use it. Do not enter a real Microsoft/Mojang account
+password into any third-party browser client.
+
+Mojang actively DMCA-takes-down unofficial browser ports (the independent Gaius
+26.3 port was removed on 20 October 2026). Keep your own copy; do not mirror the
+game payload publicly.
+
+
+3. Touch layer
+--------------
+Adapted from "Bedrock-style touch controls for Eaglercraft 26.2" by terry65536:
+https://github.com/terry65536/bedrock-touch-ui
+License: MIT — Copyright (c) 2026 terry65536.
+
+The MIT permission text in LICENSE applies to that code. Jamal Craft changes:
+  - options seeding gained a compressed synchronous fallback and ?touch= modes;
+  - the overlay layout now respects safe-area insets (notches, rounded corners);
+  - native-mode / forced-mode query switches were added;
+  - all control sprites were replaced with original artwork drawn by
+    tools/make_touch_sprites.py. No Mojang/Bedrock textures are redistributed.
+
+The layer is disabled automatically if the client's option store cannot be
+written; the client's own touch HUD then continues to work. It can be turned
+off with ?touch=native (and forced on with ?touch=bedrock).
+
+
+4. Build toolchain
+------------------
+TeaVM (Java → WebAssembly compiler), Apache-2.0 — https://teavm.org/
+brotli-dec-wasm, MIT / Apache-2.0 — used by the official single-file packaging.
+Python, Pillow, Brotli and the standard library are used by the build/server
+tools; see their own licenses.
+
+The Jamal Craft logo and the touch-control sprites were generated for this
+project. The logo is the original Jamal Craft artwork supplied with the build.
+
+
+5. Privacy
+----------
+The LAN server does not contact any external service. It logs the connecting
+IP and request path to its own console for debugging. Game worlds, settings and
+the selected username live in the browser's IndexedDB/localStorage for the page
+origin; they never leave the device unless the player exports them. There is no
+analytics, telemetry, account system or cloud storage in this build.
+
+
+6. Legal summary
+----------------
+- Unofficial fan project; not affiliated with Mojang, Microsoft or Eaglercraft.
+- Private use only. No sale, no public mirror of the game payload.
+- The MIT license covers the Jamal Craft tooling, not Minecraft or Eaglercraft.
+- You are responsible for having the right to use the Minecraft client.
