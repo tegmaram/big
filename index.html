@@ -1,80 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Open Source Game Launcher — 215 Free HTML5 Games</title>
-    <meta name="description" content="A fully open-source game launcher. 142 fully working self-hosted games + 73 external links. Play instantly on GitHub Pages." />
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#12100d" />
+  <title>Plinko After Dark — Arcade Atrium</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-inner">
-            <div class="logo">
-                <span class="logo-icon">🎮</span>
-                <span class="logo-text">Open Source Game Launcher</span>
-            </div>
-            <div class="stats">
-                <span class="stat" id="stat-self">142</span> self-hosted
-                <span class="stat" id="stat-ext">73</span> external
-                <span class="stat">All free</span>
-            </div>
-            <div class="search-wrap">
-                <input type="text" id="search" placeholder="Search games…" autocomplete="off" />
-            </div>
-        </div>
-        <div class="subheader">
-            <span id="sub-text">🟢 Self-hosted games are fully working • 🔴 External links open on other sites (may not work)</span>
-        </div>
+  <div class="noise"></div>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <main class="app-shell">
+    <header class="topbar glass">
+      <div class="brand" aria-label="Plinko After Dark">
+        <div class="brand-mark"><i></i><i></i><i></i></div>
+        <div><span class="eyebrow">THE ARCADE ATRIUM</span><h1>PLINKO <em>AFTER DARK</em></h1></div>
+      </div>
+      <div class="wallets" aria-label="Player currencies">
+        <div class="wallet"><span class="wallet-icon coin">✦</span><div><small>ARCADE CREDITS</small><strong id="credits">580</strong></div></div>
+        <div class="wallet"><span class="wallet-icon shard">◈</span><div><small>PRISM SHARDS</small><strong id="shards">12</strong></div></div>
+        <div class="wallet level"><span class="wallet-icon">⌁</span><div><small>ATRIUM LEVEL</small><strong id="playerLevel">1</strong></div></div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" id="soundBtn" aria-label="Toggle sound" title="Toggle sound">♫</button>
+        <button class="icon-button" id="saveBtn" aria-label="Save game" title="Save game">▣</button>
+      </div>
     </header>
 
-    <!-- Category filters -->
-    <nav class="filters" aria-label="Game categories">
-        <button class="filter-btn active" data-cat="all">All</button>
-        <button class="filter-btn" data-cat="self">Self-hosted only</button>
-        <button class="filter-btn" data-cat="external">External only</button>
-        <!-- Category buttons injected by JS -->
+    <nav class="navigation glass" aria-label="Main navigation">
+      <button class="nav-item active" data-view="play"><span>◉</span> Play</button>
+      <button class="nav-item" data-view="boards"><span>▦</span> Boards <b id="boardsBadge">1 / 8</b></button>
+      <button class="nav-item" data-view="collection"><span>◌</span> Ball Vault <b id="ballBadge">8 / 500</b></button>
+      <button class="nav-item" data-view="research"><span>⌬</span> Research</button>
+      <button class="nav-item" data-view="workshop"><span>⚒</span> Workshop</button>
     </nav>
 
-    <!-- Self-hosted section -->
-    <section class="game-section" id="section-self">
-        <h2 class="section-title">
-            <span class="section-badge">🟢 Fully Working</span>
-            <span>Self-Hosted Games (<span id="count-self">0</span>)</span>
-        </h2>
-        <main class="grid" id="grid-self" role="grid" aria-label="Self-hosted games">
-            <!-- Self-hosted game cards injected by JS -->
-        </main>
+    <section id="playView" class="view active-view">
+      <div class="play-layout">
+        <aside class="left-rail glass panel">
+          <div class="panel-heading"><div><span class="eyebrow">CURRENT TABLE</span><h2 id="boardName">The Brass Starter</h2></div><button class="tiny-button" data-view="boards">Change</button></div>
+          <div class="board-badge" id="boardBadge"><span class="badge-icon">✦</span><div><strong>Beginner friendly</strong><small>9 rows · warm & steady</small></div></div>
+          <div class="mastery-card">
+            <div class="mastery-title"><span>Board mastery</span><strong id="masteryText">0 / 100</strong></div>
+            <div class="meter"><span id="masteryMeter" style="width: 0%"></span></div>
+            <small id="boardPerkText">Mastery 1: unlock a table polish perk.</small>
+          </div>
+          <div class="table-perks">
+            <div class="subheading"><span>TABLE PERKS</span><small>Improves this board</small></div>
+            <button class="perk-row" id="polishPerk"><span class="perk-symbol">✧</span><span><strong>Pin Polish</strong><small>+2% credits / level</small></span><b id="polishLevel">LV 0</b><em>›</em></button>
+            <button class="perk-row" id="lanternPerk"><span class="perk-symbol">☀</span><span><strong>Amber Lantern</strong><small>+1 bonus chance / level</small></span><b id="lanternLevel">LV 0</b><em>›</em></button>
+            <button class="perk-row" id="railPerk"><span class="perk-symbol">↝</span><span><strong>Side Rails</strong><small>more edge-save chance</small></span><b id="railLevel">LV 0</b><em>›</em></button>
+          </div>
+          <div class="mini-contract" id="contractCard">
+            <div class="contract-top"><span class="eyebrow">LIVE CONTRACT</span><span class="clock">⏱ Today</span></div>
+            <strong id="contractTitle">Warm up the atrium</strong><p id="contractText">Complete 12 drops to earn Prism Shards.</p>
+            <div class="meter thin"><span id="contractMeter" style="width:0%"></span></div><small id="contractProgress">0 / 12</small>
+          </div>
+        </aside>
+
+        <section class="table-stage glass">
+          <div class="stage-topline"><span class="live-dot"></span><span id="boardSubtitle">THE GENTLE FIRST DROP</span><div class="stage-stat"><span>TOP DROP</span><strong id="topDrop">—</strong></div></div>
+          <div class="canvas-wrap">
+            <canvas id="plinkoCanvas" aria-label="Animated Plinko arcade table"></canvas>
+            <div class="canvas-overlay" id="canvasOverlay"><span>DROP A BALL</span><strong>Choose a ball, then start the machine.</strong></div>
+            <div class="win-toast" id="winToast"></div>
+          </div>
+          <div class="stage-bottomline"><div class="drop-feed" id="dropFeed"><span class="feed-label">TABLE FEED</span><span class="feed-empty">Your best drops will appear here.</span></div><div class="stage-note"><span>◌</span> Every ball is a tiny work of art.</div></div>
+        </section>
+
+        <aside class="right-rail glass panel">
+          <div class="panel-heading"><div><span class="eyebrow">LOADED BALL</span><h2 id="loadedBallName">Lucky Brass</h2></div><button class="tiny-button" data-view="collection">Vault</button></div>
+          <div class="loaded-ball-card" id="loadedBallCard">
+            <div class="ball-display"><div class="ball-orb ball-style-0" id="loadedBallOrb"><span></span></div><div class="orb-shadow"></div></div>
+            <div class="rarity-line"><span id="loadedRarity">COMMON</span><b id="loadedLevel">LV 1</b></div>
+            <p id="loadedDescription">A friendly warm-up ball. It leaves a little luck behind on every peg.</p>
+          </div>
+          <div class="ball-stat-list">
+            <div><span>Reward tuning</span><strong id="ballMult">×1.00</strong></div>
+            <div><span>Fortune</span><strong id="ballLuck">+2%</strong></div>
+            <div><span>Special</span><strong id="ballPower">Warm glow</strong></div>
+          </div>
+          <button class="upgrade-ball-button" id="upgradeBallBtn"><span>✦</span><span><small>IMPROVE THIS BALL</small><strong id="upgradeBallCost">85 credits</strong></span><b>›</b></button>
+          <div class="drop-controls">
+            <div class="drop-label"><span>DROP CONSOLE</span><small id="queueCount">0 balls in motion</small></div>
+            <div class="drop-button-row"><button class="drop-button" id="dropBtn"><span class="drop-icon">↓</span><span><small>SINGLE</small><strong>Drop</strong></span></button><button class="batch-button" id="batchBtn" title="Drop three balls">×3</button></div>
+            <button class="auto-button" id="autoBtn"><span class="auto-light"></span><span><strong>Auto-drop</strong><small>1 ball every 1.35 seconds</small></span><kbd>SPACE</kbd></button>
+          </div>
+        </aside>
+      </div>
+      <div class="bottom-strip glass">
+        <div class="tip-card"><span class="tip-icon">☼</span><div><span class="eyebrow">ATRIUM TIP</span><p id="tipText">Upgrade a ball when you find one whose ability fits your favourite board.</p></div></div>
+        <div class="progress-summary"><div><span class="eyebrow">NEXT UNLOCK</span><strong id="nextUnlock">Cinder Alley <small>at level 2</small></strong></div><div class="meter"><span id="levelMeter" style="width: 5%"></span></div><b id="xpText">35 / 150 XP</b></div>
+        <button class="help-button" id="tutorialBtn"><span>?</span> How it works</button>
+      </div>
     </section>
 
-    <!-- External section -->
-    <section class="game-section" id="section-ext">
-        <h2 class="section-title">
-            <span class="section-badge ext-badge">🔴 External Links</span>
-            <span>External Games (<span id="count-ext">0</span>)</span>
-        </h2>
-        <p class="section-note">These games are hosted on other websites. Clicking opens them in a new tab — they may not work or may be blocked by your network.</p>
-        <main class="grid" id="grid-ext" role="grid" aria-label="External games">
-            <!-- External game cards injected by JS -->
-        </main>
+    <section id="boardsView" class="view">
+      <div class="page-heading"><div><span class="eyebrow">THE FLOOR MAP</span><h2>Choose your <em>Plinko table</em></h2><p>Every board has its own geometry, rewards, materials, and mastery perks.</p></div><div class="page-summary"><span>TABLES OPEN</span><strong id="openBoards">1 / 8</strong></div></div>
+      <div class="board-grid" id="boardGrid"></div>
     </section>
 
-    <!-- Empty state -->
-    <div class="empty" id="empty" style="display:none;">
-        <p>No games match your search.</p>
+    <section id="collectionView" class="view">
+      <div class="page-heading collection-header"><div><span class="eyebrow">THE VAULT OF LITTLE WONDERS</span><h2>500 balls. <em>All worth dropping.</em></h2><p>Collect, improve, and merge a universe of peculiar Plinko balls.</p></div><div class="collection-summary"><strong id="collectionTotal">8</strong><span> / 500 collected</span><div class="meter"><span id="collectionMeter" style="width:1.6%"></span></div></div></div>
+      <div class="collection-toolbar glass"><div class="rarity-filter" id="rarityFilter"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="common">Common</button><button class="filter" data-filter="uncommon">Uncommon</button><button class="filter" data-filter="rare">Rare</button><button class="filter" data-filter="epic">Epic+</button></div><label class="search-box">⌕<input id="ballSearch" placeholder="Find a ball" /></label></div>
+      <div class="ball-grid" id="ballGrid"></div>
+    </section>
+
+    <section id="researchView" class="view">
+      <div class="page-heading"><div><span class="eyebrow">THE QUIET SCIENCE OF BOUNCE</span><h2>Research the <em>impossible</em></h2><p>Permanent, account-wide improvements from the Atrium’s brass-and-glass laboratories.</p></div><div class="research-wallet"><span>AVAILABLE</span><strong><i>◈</i> <span id="researchShards">12</span> shards</strong></div></div>
+      <div class="research-layout" id="researchGrid"></div>
+    </section>
+
+    <section id="workshopView" class="view">
+      <div class="page-heading"><div><span class="eyebrow">THE BACKROOM WORKSHOP</span><h2>Merge tiny things into <em>better tiny things</em></h2><p>Select three owned balls of the same rarity. The workshop returns a new ball one tier higher.</p></div><div class="workshop-status"><span>MERGE POWER</span><strong id="mergeStatus">Choose 3 balls</strong></div></div>
+      <div class="workshop-layout">
+        <section class="merge-machine glass"><div class="machine-head"><span class="machine-lamp"></span><span>THE TRIPLE PRESS</span><span class="machine-lamp"></span></div><div class="merge-slots" id="mergeSlots"></div><div class="merge-arrow">↓</div><div class="merge-result"><div class="mystery-orb">?</div><div><span class="eyebrow">ASSEMBLY RESULT</span><strong id="mergeResult">Pick three matching balls</strong><small id="mergeResultText">Common + Common + Common = Uncommon</small></div></div><button class="merge-button" id="mergeBtn" disabled>Merge selected balls <span>✦</span></button></section>
+        <section class="merge-inventory glass"><div class="panel-heading"><div><span class="eyebrow">AVAILABLE MATERIAL</span><h2>Your vault</h2></div><small>Tap to add</small></div><div class="merge-ball-list" id="mergeInventory"></div></section>
+      </div>
+    </section>
+
+    <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <section class="modal tutorial-modal" id="tutorialModal" role="dialog" aria-modal="true" aria-labelledby="tutorialTitle">
+    <button class="modal-close" data-close-modal aria-label="Close">×</button>
+    <div class="tutorial-orbit"><span></span><span></span><span></span></div>
+    <span class="eyebrow">WELCOME TO THE ATRIUM</span><h2 id="tutorialTitle">Small balls. <em>Big evenings.</em></h2>
+    <div class="tutorial-steps">
+      <article><b>01</b><div><strong>Drop a ball</strong><p>Choose a table and a ball. Every landing earns Arcade Credits—there are no stakes or losses.</p></div></article>
+      <article><b>02</b><div><strong>Make it yours</strong><p>Upgrade balls and table perks, then tune your collection to each board’s special mechanic.</p></div></article>
+      <article><b>03</b><div><strong>Open the vault</strong><p>Earn levels, unlock tables, finish contracts, research inventions, and merge spare balls.</p></div></article>
     </div>
+    <button class="primary-button" id="startTutorialBtn">Let’s make some noise <span>→</span></button>
+    <small class="save-note">Your progress saves automatically in this browser.</small>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <p>🎮 <strong>Open Source Game Launcher</strong> — 142 fully working self-hosted games + 73 external links.</p>
-            <p>Self-hosted games: <a href="https://github.com/sausi-7/games" target="_blank" rel="noopener">sausi-7/games</a> (MIT) &bull; Launcher: this repository (MIT)</p>
-            <p>Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> &bull; No server, no tracking, no hidden code.</p>
-            <p><a href="test.html">🧪 Run game test suite</a> &bull; <a href="games.json">View game manifest</a></p>
-        </div>
-    </footer>
-
-    <script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
