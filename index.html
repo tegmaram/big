@@ -66,7 +66,11 @@
             <div class="canvas-overlay" id="canvasOverlay"><span>DROP A BALL</span><strong>Choose a ball, then start the machine.</strong></div>
             <div class="win-toast" id="winToast"></div>
           </div>
-          <div class="stage-bottomline"><div class="drop-feed" id="dropFeed"><span class="feed-label">TABLE FEED</span><span class="feed-empty">Your best drops will appear here.</span></div><div class="stage-note"><span>◌</span> Every ball is a tiny work of art.</div></div>
+          <div class="skill-rail" aria-label="Precision timing gate">
+            <div class="skill-rail-head"><span>PRECISION GATE</span><strong id="precisionStatus">TIME THE GOLD WINDOW</strong><small>center lane unlocks the jackpot</small></div>
+            <div class="aim-track"><i class="aim-safe"></i><i class="aim-perfect"></i><span id="aimNeedle" aria-hidden="true"></span></div>
+          </div>
+          <div class="stage-bottomline"><div class="drop-feed" id="dropFeed"><span class="feed-label">TABLE FEED</span><span class="feed-empty">Your best drops will appear here.</span></div><div class="stage-note"><span>◌</span> One careful drop at a time.</div></div>
         </section>
 
         <aside class="right-rail glass panel">
@@ -84,8 +88,8 @@
           <button class="upgrade-ball-button" id="upgradeBallBtn"><span>✦</span><span><small>IMPROVE THIS BALL</small><strong id="upgradeBallCost">85 credits</strong></span><b>›</b></button>
           <div class="drop-controls">
             <div class="drop-label"><span>DROP CONSOLE</span><small id="queueCount">0 balls in motion</small></div>
-            <div class="drop-button-row"><button class="drop-button" id="dropBtn"><span class="drop-icon">↓</span><span><small>SINGLE</small><strong>Drop</strong></span></button><button class="batch-button" id="batchBtn" title="Drop three balls">×3</button></div>
-            <button class="auto-button" id="autoBtn"><span class="auto-light"></span><span><strong>Auto-drop</strong><small>1 ball every 1.35 seconds</small></span><kbd>SPACE</kbd></button>
+            <div class="drop-button-row"><button class="drop-button" id="dropBtn"><span class="drop-icon">↓</span><span><small id="dropActionLabel">PRECISION RELEASE</small><strong id="dropActionState">Time the gold</strong></span></button></div>
+            <div class="discipline-note"><span>⌁</span><span><strong>One ball at a time</strong><small>The table must settle before another drop.</small></span><kbd>SPACE</kbd></div>
           </div>
         </aside>
       </div>
@@ -129,7 +133,7 @@
     <div class="tutorial-orbit"><span></span><span></span><span></span></div>
     <span class="eyebrow">WELCOME TO THE ATRIUM</span><h2 id="tutorialTitle">Small balls. <em>Big evenings.</em></h2>
     <div class="tutorial-steps">
-      <article><b>01</b><div><strong>Drop a ball</strong><p>Choose a table and a ball. Every landing earns Arcade Credits—there are no stakes or losses.</p></div></article>
+      <article><b>01</b><div><strong>Time the precision gate</strong><p>Release only when the moving needle reaches the thin gold window. The center jackpot is deliberately difficult.</p></div></article>
       <article><b>02</b><div><strong>Make it yours</strong><p>Upgrade balls and table perks, then tune your collection to each board’s special mechanic.</p></div></article>
       <article><b>03</b><div><strong>Open the vault</strong><p>Earn levels, unlock tables, finish contracts, research inventions, and merge spare balls.</p></div></article>
     </div>
