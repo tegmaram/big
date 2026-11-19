@@ -44,7 +44,7 @@
       { id:'discovery', name:'Open Ledger', desc:'Find new balls more often.', max:4, cost:4 }
     ]},
     { title:'Atrium Engineering', icon:'⚙', description:'Gentle automation for long evenings.', nodes:[
-      { id:'auto', name:'Patient Machine', desc:'Auto-drop is 0.08s faster per level.', max:4, cost:3 },
+      { id:'auto', name:'Steady Hand', desc:'The precision gate recalibrates 0.08s faster per level.', max:4, cost:3 },
       { id:'archive', name:'Museum Light', desc:'+2% XP earned per level.', max:5, cost:3 }
     ]}
   ];
@@ -106,6 +106,8 @@
       };
       restored.balls = Array.isArray(saved.balls) && saved.balls.length ? saved.balls : fresh.balls;
       restored.feed = Array.isArray(saved.feed) ? saved.feed.slice(0, 4) : [];
+      // Precision edition deliberately turns off legacy auto-drop saves.
+      restored.auto = false;
       return restored;
     } catch (_) { return initialState(); }
   }
@@ -168,10 +170,14 @@
     setText('#contractTitle', state.contractDone ? 'A tidy little contract' : 'Warm up the atrium');
     setText('#contractText', state.contractDone ? 'Claimed: come back tomorrow for another small delight.' : 'Complete 12 drops to earn 4 Prism Shards.');
     setText('#contractProgress', state.contractDone ? 'complete' : `${cp} / ${target}`); setWidth('#contractMeter', state.contractDone ? 100 : cp / target * 100);
-    setText('#queueCount', `${ballsInMotion.length} ball${ballsInMotion.length === 1 ? '' : 's'} in motion`);
-    $('#autoBtn').classList.toggle('on', !!state.auto);
-    $('#autoBtn').querySelector('strong').textContent = state.auto ? 'Auto-drop is on' : 'Auto-drop';
-    $('#canvasOverlay').classList.toggle('hidden', state.drops > 0 || ballsInMotion.length > 0);
+    const busy = ballsInMotion.length > 0;
+    const cooling = performance.now() < dropReadyAt;
+    setText('#queueCount', busy ? 'table in motion' : cooling ? 'recalibrating gate' : 'precision gate ready');
+    const dropButton = $('#dropBtn');
+    if (dropButton) dropButton.disabled = busy || cooling;
+    setText('#dropActionLabel', busy ? 'BALL IN MOTION' : cooling ? 'RECALIBRATING' : 'PRECISION RELEASE');
+    setText('#dropActionState', busy ? 'Watch the path' : cooling ? 'Hold steady' : 'Time the gold');
+    $('#canvasOverlay').classList.toggle('hidden', state.drops > 0 || busy);
     renderFeed(); updateTopUI();
   }
 
@@ -312,7 +318,9 @@
   // --- Canvas: the animation is visual, while rewards are settled only at the end. ---
   const canvas = $('#plinkoCanvas'); const ctx = canvas.getContext('2d');
   let dpr = Math.min(window.devicePixelRatio || 1, 2);
-  let pegs = [], bins = [], ballsInMotion = [], sparkles = [], lastFrame = performance.now(), autoAccumulator = 0;
+  let pegs = [], bins = [], ballsInMotion = [], sparkles = [], lastFrame = performance.now();
+  let dropReadyAt = 0, lastBlockedNotice = 0;
+  const launchGate = { position: .5, precision: 0, locked: false };
   function resizeCanvas() {
     const rect = canvas.getBoundingClientRect(); if (!rect.width || !rect.height) return;
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -335,9 +343,27 @@
       }
     }
     const lowY = y0 + (rows-1) * gapY + 35;
-    const count = rows + 1, span = rows * spread + 25, start = W/2 - span/2;
-    const mults = []; for(let i=0;i<count;i++){ const t=Math.abs((i/(count-1))*2-1); const edge=1+Math.pow(t,3)*7; const center=.76+Math.pow(t,1.55)*.65; mults.push(+(edge * center).toFixed(2)); }
-    bins = Array.from({length:count}, (_, i) => ({ x:start + i*(span/count), w:span/count, y:lowY, mult:mults[i] }));
+    let count = rows + 2; if (count % 2 === 0) count += 1; // An exact central jackpot pocket.
+    const span = Math.min(840, rows * spread + 96), start = W / 2 - span / 2, center = Math.floor(count / 2);
+    const payoutForDistance = d => d === 0 ? 25 : d === 1 ? 4.2 : d === 2 ? 1.9 : d === 3 ? 1.05 : d === 4 ? .55 : .2;
+    bins = Array.from({length:count}, (_, i) => {
+      const distance = Math.abs(i - center), mult = payoutForDistance(distance);
+      return { x:start + i*(span/count), w:span/count, y:lowY, mult, distance, jackpot:i===center };
+    });
+  }
+  function boardBounds(y) {
+    const bottom = pegs.length ? pegs[pegs.length - 1].y : 500;
+    const progress = clamp((y - 83) / Math.max(1, bottom - 83), 0, 1);
+    const finalHalf = bins.length ? (bins[bins.length-1].x + bins[bins.length-1].w / 2 - W / 2) + 34 : 390;
+    const half = 30 + progress * finalHalf;
+    return { left:W / 2 - half, right:W / 2 + half };
+  }
+  function updateLaunchGate(now) {
+    launchGate.position = (Math.sin(now / 610) + 1) / 2;
+    launchGate.precision = 1 - Math.abs(launchGate.position - .5) * 2;
+    const needle = $('#aimNeedle'); if (needle) needle.style.left = `${launchGate.position * 100}%`;
+    const status = $('#precisionStatus');
+    if (status && !ballsInMotion.length) status.textContent = launchGate.precision >= .956 ? 'JACKPOT WINDOW — DROP NOW' : launchGate.precision >= .86 ? 'GOOD ALIGNMENT' : 'TIME THE GOLD WINDOW';
   }
   function drawScene() {
     if (!ctx || !canvas.width) return;
@@ -357,14 +383,24 @@
       const grad=ctx.createRadialGradient(p.x-2,p.y-3,1,p.x,p.y,p.r+2);grad.addColorStop(0,'#fff0b3');grad.addColorStop(.28,accent);grad.addColorStop(1,`hsl(${b.accent} 55% 24%)`);ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();
       if (p.row % 3 === 0) {ctx.beginPath();ctx.arc(p.x,p.y,p.r+5,0,Math.PI*2);ctx.strokeStyle=`hsla(${b.accent},90%,65%,.12)`;ctx.stroke();}
     }
-    // bins
-    for(const [i, bin] of bins.entries()) {
-      const hot = bin.mult >= 3.4; const shade = hot ? `hsla(${b.accent},86%,62%,.22)` : 'rgba(255,255,255,.035)';
-      ctx.fillStyle=shade;ctx.fillRect(bin.x+2,bin.y,bin.w-4,57);ctx.strokeStyle=hot ? `hsla(${b.accent},85%,67%,.55)` : 'rgba(231,195,125,.18)';ctx.lineWidth=1;ctx.strokeRect(bin.x+2,bin.y,bin.w-4,57);
-      ctx.fillStyle=hot ? '#ffd46e' : '#d0bb93';ctx.font=`${bin.w < 36 ? 10 : 12}px DM Mono, monospace`;ctx.textAlign='center';ctx.fillText(`×${bin.mult}`,bin.x+bin.w/2,bin.y+33);
+    // Outer gutters are intentional: falling past the board earns nothing.
+    if (bins.length) {
+      const leftGutter = bins[0].x, rightGutter = bins[bins.length-1].x + bins[bins.length-1].w;
+      ctx.fillStyle='rgba(72,22,18,.22)';ctx.fillRect(34,bins[0].y,leftGutter-36,57);ctx.fillRect(rightGutter,bins[0].y,W-rightGutter-34,57);
+      ctx.fillStyle='rgba(231,139,105,.48)';ctx.font='9px ui-monospace, monospace';ctx.textAlign='center';ctx.fillText('OUT · 0',Math.max(75,leftGutter/2),bins[0].y+33);ctx.fillText('0 · OUT',Math.min(925,(rightGutter+W)/2),bins[0].y+33);
+    }
+    // Rewards climb toward a deliberately narrow centre jackpot.
+    for(const bin of bins) {
+      const hot = bin.jackpot, mid = bin.distance === 1;
+      const shade = hot ? `hsla(${b.accent},94%,66%,.42)` : mid ? `hsla(${b.accent},82%,58%,.18)` : bin.mult <= .2 ? 'rgba(123,56,31,.17)' : 'rgba(255,255,255,.035)';
+      ctx.fillStyle=shade;ctx.fillRect(bin.x+2,bin.y,bin.w-4,57);
+      ctx.strokeStyle=hot ? '#ffe49a' : mid ? `hsla(${b.accent},85%,67%,.62)` : 'rgba(231,195,125,.18)';ctx.lineWidth=hot ? 2 : 1;ctx.strokeRect(bin.x+2,bin.y,bin.w-4,57);
+      ctx.fillStyle=hot ? '#fff2bd' : mid ? '#f4c762' : '#c4af88';ctx.font=`${hot ? 8 : bin.w < 36 ? 9 : 11}px ui-monospace, monospace`;ctx.textAlign='center';
+      ctx.fillText(hot ? 'JACKPOT' : `×${bin.mult}`,bin.x+bin.w/2,bin.y+(hot ? 22 : 32));
+      if(hot){ctx.font='10px ui-monospace, monospace';ctx.fillText('×25',bin.x+bin.w/2,bin.y+40);}
     }
     // apparatus labels
-    ctx.textAlign='left';ctx.fillStyle='rgba(226,193,125,.42)';ctx.font='10px DM Mono, monospace';ctx.fillText(b.name.toUpperCase(),43,51);ctx.textAlign='right';ctx.fillText(`${b.rows} PEG ROWS`,957,51);
+    ctx.textAlign='left';ctx.fillStyle='rgba(226,193,125,.42)';ctx.font='10px ui-monospace, monospace';ctx.fillText(b.name.toUpperCase(),43,51);ctx.textAlign='right';ctx.fillText(`${b.rows} PEG ROWS · CENTRAL JACKPOT`,957,51);
     // balls and sparks
     drawBalls();
   }
@@ -377,18 +413,36 @@
       const grad=ctx.createRadialGradient(-4,-5,1,0,0,14);grad.addColorStop(0,'#fff9d8');grad.addColorStop(.14,`hsl(${d.hue2} 90% 72%)`);grad.addColorStop(.48,`hsl(${d.hue} 77% 48%)`);grad.addColorStop(1,'#1a0805');ctx.beginPath();ctx.arc(0,0,12,0,Math.PI*2);ctx.fillStyle=grad;ctx.fill();ctx.strokeStyle=`hsla(${d.hue2},95%,75%,.65)`;ctx.lineWidth=1;ctx.beginPath();ctx.arc(0,0,9,0,Math.PI*2);ctx.stroke();ctx.restore();
     }
   }
-  function spawnBall(delay = 0) {
-    if (ballsInMotion.length >= 14) return;
-    const own = getSelectedBall(), d = ballDefs[own.id];
-    const b = { ballId:own.id, x:500+(Math.random()-.5)*8, y:54-delay*18, vx:(Math.random()-.5)*.5, vy:0, r:12, age:0, trail:[], alive:true, lastHit:-1, hitCooldown:0 };
-    ballsInMotion.push(b); $('#canvasOverlay').classList.add('hidden'); beep(410,.035); updatePlayUI();
+  function spawnBall() {
+    const now = performance.now();
+    if (ballsInMotion.length || now < dropReadyAt) {
+      if (now - lastBlockedNotice > 1200) {
+        lastBlockedNotice = now;
+        notice(ballsInMotion.length ? 'Table in motion' : 'Gate recalibrating', ballsInMotion.length ? 'Read the bounce before taking another shot.' : 'The launcher needs one quiet moment.');
+      }
+      return;
+    }
+    const own = getSelectedBall();
+    const aimOffset = (launchGate.position - .5) * 2;
+    const precision = 1 - Math.abs(aimOffset);
+    const b = { ballId:own.id, x:500 + aimOffset * 18, y:54, vx:aimOffset * 3.05, vy:0, r:12, age:0, trail:[], alive:true, lastHit:-1, hitCooldown:0, precision, aimOffset };
+    ballsInMotion.push(b); $('#canvasOverlay').classList.add('hidden');
+    const status = $('#precisionStatus'); if (status) status.textContent = precision >= .956 ? 'JACKPOT LOCKED' : precision >= .86 ? 'LINE SET — STAY CALM' : 'THE BOARD WILL PUNISH RUSHING';
+    beep(precision >= .956 ? 760 : 410,.04); updatePlayUI();
   }
   function updatePhysics(dt) {
     const b = board();
     for (const ball of ballsInMotion) {
       ball.age += dt; ball.hitCooldown -= dt; ball.vy += .115 * dt; ball.vx *= Math.pow(.996, dt); ball.x += ball.vx * dt; ball.y += ball.vy * dt;
       ball.trail.push({x:ball.x,y:ball.y}); if(ball.trail.length>12) ball.trail.shift();
-      if(ball.x < 38){ball.x=38;ball.vx=Math.abs(ball.vx)*.74;} if(ball.x>W-38){ball.x=W-38;ball.vx=-Math.abs(ball.vx)*.74;}
+      const limits = boardBounds(ball.y);
+      if (ball.y > 105 && (ball.x < limits.left || ball.x > limits.right)) {
+        const perks = getPerks();
+        if (perks.rail && Math.random() < perks.rail * .09) {
+          ball.x = clamp(ball.x, limits.left + ball.r, limits.right - ball.r); ball.vx *= -.55;
+          addSpark(ball.x,ball.y,'#f4c45e',9);
+        } else { settleBall(ball, true); continue; }
+      }
       for(let i=0;i<pegs.length;i++) { const p=pegs[i], dx=ball.x-p.x,dy=ball.y-p.y,dist=Math.hypot(dx,dy),min=ball.r+p.r;
         if(dist<min && dist>.01 && (ball.lastHit!==i || ball.hitCooldown<=0)) { const nx=dx/dist,ny=dy/dist;ball.x=p.x+nx*(min+.5);ball.y=p.y+ny*(min+.5);const dot=ball.vx*nx+ball.vy*ny;ball.vx=(ball.vx-2*dot*nx)*.57+(Math.random()-.5)*.8;ball.vy=(ball.vy-2*dot*ny)*.57; if(ball.vy<.25)ball.vy=.3;ball.lastHit=i;ball.hitCooldown=5; addSpark(p.x,p.y,`hsl(${ballDefs[ball.ballId].hue} 88% 70%)`,2); }
       }
@@ -396,26 +450,32 @@
       if (b.type === 'clock') ball.vx += Math.sin(performance.now()/430 + ball.y*.04)*.025*dt;
       if (ball.y > H-72) settleBall(ball);
     }
+    const countBefore = ballsInMotion.length;
     ballsInMotion = ballsInMotion.filter(x => x.alive);
+    if (countBefore !== ballsInMotion.length) updatePlayUI();
     for(const s of sparkles){s.life-=.04*dt;s.y-=.15*dt;} sparkles=sparkles.filter(s=>s.life>0);
   }
   function addSpark(x,y,color,count=3){for(let i=0;i<count;i++)sparkles.push({x:x+(Math.random()-.5)*8,y:y+(Math.random()-.5)*8,size:2+Math.random()*2,color,life:.8});}
-  function settleBall(ball) {
-    ball.alive=false; const b=board(), own=ballOwned(ball.ballId), d=ballDefs[ball.ballId];
+  function settleBall(ball, fellOff = false) {
+    ball.alive=false; dropReadyAt = performance.now() + Math.max(300, 620 - (state.research.auto || 0) * 80);
+    const b=board(), own=ballOwned(ball.ballId), d=ballDefs[ball.ballId];
     const bin = bins.reduce((best,cur) => Math.abs(cur.x+cur.w/2-ball.x)<Math.abs(best.x+best.w/2-ball.x)?cur:best,bins[0]);
     const perks=getPerks(), researchBonus=1+(state.research.physics||0)*.03, boardBonus=1+perks.polish*.02;
-    let reward=Math.round((13+b.rows*1.4)*bin.mult*ballMultiplier(own)*b.base*researchBonus*boardBonus);
-    // The edge-save perk softens an unlucky bottom pocket, not any player stake.
-    if(bin.mult < 1 && perks.rail && Math.random()<perks.rail*.08) reward=Math.max(reward,Math.round(25*ballMultiplier(own)));
-    const lucky = Math.random() < (ballLuck(own)+perks.lantern)/100;
-    if(lucky) reward=Math.round(reward*1.38);
+    const jackpotOdds = .18 + Math.min(.12, (ballLuck(own) + perks.lantern) / 190);
+    const jackpot = !fellOff && bin.jackpot && ball.precision >= .956 && Math.random() < jackpotOdds;
+    let multiplier = fellOff ? 0 : jackpot ? bin.mult : bin.jackpot ? .35 : bin.mult;
+    let label = fellOff ? 'FELL OUT · ×0' : jackpot ? 'CENTRAL JACKPOT · ×25' : bin.jackpot ? 'JACKPOT GATE MISSED · ×0.35' : `×${multiplier} pocket`;
+    let reward=Math.round((13+b.rows*1.4)*multiplier*ballMultiplier(own)*b.base*researchBonus*boardBonus);
+    const lucky = reward > 0 && !jackpot && Math.random() < (ballLuck(own)+perks.lantern)/100;
+    if(lucky) { reward=Math.round(reward*1.38); label='FORTUNE FLARE'; }
     state.credits += reward;state.drops++;state.topDrop=Math.max(state.topDrop,reward);state.boardMastery[b.id]=(state.boardMastery[b.id]||0)+1+(state.research.momentum||0);
     state.contractProgress=Math.min(12,state.contractProgress+1);
     if(state.contractProgress >=12 && !state.contractDone){state.contractDone=true;state.shards+=4;notice('Contract complete', 'The Atrium sent you 4 Prism Shards.');}
-    const xpGain=(4+Math.floor(reward/16))*(1+(state.research.archive||0)*.02); addXp(xpGain);
-    state.feed.unshift({text:`${d.name}: +${nf.format(reward)}`,bonus:lucky});state.feed=state.feed.slice(0,4);
-    addSpark(ball.x,H-75,lucky?'#ffe26e':`hsl(${d.hue} 85% 65%)`,lucky?15:7);showWin(reward,lucky ? 'FORTUNE FLARE' : `×${bin.mult} pocket`);maybeDiscover();beep(lucky?760:570,.065);
-    updatePlayUI(); if(currentView==='collection')renderCollection(); if(currentView==='workshop')renderWorkshop();
+    const xpGain=(1+Math.floor(reward/16))*(1+(state.research.archive||0)*.02); addXp(xpGain);
+    state.feed.unshift({text:`${d.name}: ${reward ? '+'+nf.format(reward) : '0'}`,bonus:lucky || jackpot});state.feed=state.feed.slice(0,4);
+    addSpark(ball.x,H-75,jackpot?'#fff0a5':lucky?'#ffe26e':fellOff?'#d8684e':`hsl(${d.hue} 85% 65%)`,jackpot?28:lucky?15:7);showWin(reward,label);maybeDiscover();beep(jackpot?980:lucky?760:reward?570:170,jackpot?.16:.065);
+    if(currentView==='collection')renderCollection(); if(currentView==='workshop')renderWorkshop();
+    setTimeout(updatePlayUI, Math.max(330, 650 - (state.research.auto || 0) * 80));
     if(state.drops%5===0) saveGame(true);
   }
   function addXp(amount) { state.xp+=amount;let leveled=false;while(state.xp>=nextXpGoal()){state.xp-=nextXpGoal();state.level++;leveled=true;}if(leveled){notice('Atrium level up!', `Level ${state.level} unlocked a little more of the house.`);renderBoards();beep(920,.15);}}
@@ -427,7 +487,7 @@
     state.balls.push({id:d.id,level:1,xp:0});state.lastDiscoveryAt=state.drops;notice('Vault discovery!', `${d.name} rolled out of a hidden drawer.`);addSpark(500,95,`hsl(${d.hue} 90% 70%)`,20);renderCollection();
   }
   function showWin(reward,label) { const el=$('#winToast');el.innerHTML=`<strong>+${nf.format(reward)}</strong><span>${label}</span>`;el.classList.add('show');clearTimeout(showWin.timer);showWin.timer=setTimeout(()=>el.classList.remove('show'),900); }
-  function loop(now) { const dt=Math.min(2.1,(now-lastFrame)/16.666||1);lastFrame=now; if(state.auto && currentView==='play'){autoAccumulator+=dt*16.666;const delay=Math.max(650,1350-(state.research.auto||0)*80);if(autoAccumulator>=delay){autoAccumulator=0;spawnBall();}}updatePhysics(dt);drawScene();requestAnimationFrame(loop); }
+  function loop(now) { const dt=Math.min(2.1,(now-lastFrame)/16.666||1);lastFrame=now; updateLaunchGate(now); updatePhysics(dt);drawScene();requestAnimationFrame(loop); }
 
   function beep(freq=520,duration=.04) { if(!state.sound) return;try {audioCtx ||= new (window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.value=freq;o.type='sine';g.gain.setValueAtTime(.025,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);o.connect(g).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration);}catch(_){} }
   function notice(title,text) {const el=document.createElement('div');el.className='notice';el.innerHTML=`<strong>${title}</strong>${text}`;$('#toastStack').append(el);setTimeout(()=>{el.style.opacity='0';el.style.transform='translateX(20px)';setTimeout(()=>el.remove(),250)},3400);}
@@ -439,8 +499,6 @@
     $$('.nav-item').forEach(btn=>btn.addEventListener('click',()=>switchView(btn.dataset.view)));
     $$('[data-view]').forEach(btn=>btn.addEventListener('click',()=>switchView(btn.dataset.view)));
     $('#dropBtn').addEventListener('click',()=>spawnBall());
-    $('#batchBtn').addEventListener('click',()=>{spawnBall(0);setTimeout(()=>spawnBall(1),180);setTimeout(()=>spawnBall(2),360);});
-    $('#autoBtn').addEventListener('click',()=>{state.auto=!state.auto;autoAccumulator=0;updatePlayUI();saveGame(true);notice(state.auto?'Machine engaged':'Machine paused',state.auto?'It will release a ball every few moments.':'The drop lever is back in your hands.');});
     $('#upgradeBallBtn').addEventListener('click',upgradeBall);
     $('#polishPerk').addEventListener('click',()=>upgradePerk('polish'));$('#lanternPerk').addEventListener('click',()=>upgradePerk('lantern'));$('#railPerk').addEventListener('click',()=>upgradePerk('rail'));
     $('#mergeBtn').addEventListener('click',mergeBalls);
